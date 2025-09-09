@@ -1,5 +1,7 @@
 using Shop.Data;
 using Microsoft.EntityFrameworkCore;
+using Shop.Core.ServiceInterface;
+using Shop.ApplicationServices.Services;
 
 namespace Shop
 {
@@ -17,6 +19,8 @@ namespace Shop
             builder.Services.AddDbContext<ShopContext>(option =>
                 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
                     b => b.MigrationsAssembly("Shop")));
+
+            builder.Services.AddScoped<ISpaceShipsServices, SpaceShipsServices>();
 
             var app = builder.Build();
 

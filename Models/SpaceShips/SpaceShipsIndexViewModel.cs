@@ -11,6 +11,5 @@
         public int? Passengers { get; set; }
         public int? InnerVolume { get; set; }
 
-
     }
 }

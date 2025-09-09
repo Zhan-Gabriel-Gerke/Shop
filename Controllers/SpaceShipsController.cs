@@ -2,6 +2,8 @@
 using Shop.Models.SpaceShips;
 using Shop.Data;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Shop.Core.ServiceInterface;
+using Shop.Core.Dto;
 
 namespace Shop.Controllers
 {
@@ -9,13 +11,16 @@ namespace Shop.Controllers
     {
 
         private readonly ShopContext _context;
+        private readonly ISpaceShipsServices _spaceShipsServices;
 
         public SpaceShipsController
             (
-                ShopContext context
+                ShopContext context,
+                ISpaceShipsServices spaceShipsServices
             )
         {
             _context = context;
+            _spaceShipsServices = spaceShipsServices;
         }
         public IActionResult Index()
         {
@@ -37,6 +42,33 @@ namespace Shop.Controllers
             SpaceShipCreateModel result = new();
 
             return View("Create", result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(SpaceShipCreateModel vm)
+        {
+            var dto = new SpaceShipDto()
+            {
+                Id = vm.Id,
+                Name = vm.Name,
+                TypeName = vm.TypeName,
+                BuiltDate = vm.BuiltDate,
+                Crew = vm.Crew,
+                EnginePower = vm.EnginePower,
+                Passengers = vm.Passengers,
+                InnerVolume = vm.InnerVolume,
+                CreatedAt = vm.CreatedAt,
+                ModifiedAt = vm.ModifiedAt
+            };
+
+            var result = await _spaceShipsServices.Create(dto);
+
+            if (result == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(result);
         }
     }
 }
