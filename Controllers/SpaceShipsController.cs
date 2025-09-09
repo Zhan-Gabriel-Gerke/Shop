@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shop.Models.SpaceShips;
 using Shop.Data;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace Shop.Controllers
 {
@@ -29,6 +30,13 @@ namespace Shop.Controllers
 
                 });
             return View(result);
+        }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            SpaceShipCreateModel result = new();
+
+            return View("Create", result);
         }
     }
 }
