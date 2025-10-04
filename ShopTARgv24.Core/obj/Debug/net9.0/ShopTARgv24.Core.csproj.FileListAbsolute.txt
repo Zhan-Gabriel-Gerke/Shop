@@ -1,0 +1,13 @@
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24.Core\bin\Debug\net9.0\ShopTARgv24.Core.deps.json
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24.Core\bin\Debug\net9.0\ShopTARgv24.Core.dll
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24.Core\bin\Debug\net9.0\ShopTARgv24.Core.pdb
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24.Core\obj\Debug\net9.0\ShopTARgv24.Core.csproj.AssemblyReference.cache
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24.Core\obj\Debug\net9.0\ShopTARgv24.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24.Core\obj\Debug\net9.0\ShopTARgv24.Core.AssemblyInfoInputs.cache
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24.Core\obj\Debug\net9.0\ShopTARgv24.Core.AssemblyInfo.cs
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24.Core\obj\Debug\net9.0\ShopTARgv24.Core.csproj.CoreCompileInputs.cache
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24.Core\obj\Debug\net9.0\ShopTARgv24.Core.sourcelink.json
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24.Core\obj\Debug\net9.0\ShopTARgv24.Core.dll
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24.Core\obj\Debug\net9.0\refint\ShopTARgv24.Core.dll
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24.Core\obj\Debug\net9.0\ShopTARgv24.Core.pdb
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24.Core\obj\Debug\net9.0\ref\ShopTARgv24.Core.dll
