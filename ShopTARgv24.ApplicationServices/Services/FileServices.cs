@@ -101,5 +101,26 @@ namespace ShopTARgv24.ApplicationServices.Services
 
             return null;
         }
+        public void UploadFilesToDatabase(RealEstateDto dto, RealEstate domain)
+        {
+            if (dto.Files != null && dto.Files.Count > 0)
+            {
+                foreach (var file in dto.Files)
+                {
+                    using (var target = new MemoryStream())
+                    {
+                        FileToDatabase files = new FileToDatabase()
+                        {
+                            Id = Guid.NewGuid(),
+                            ImageTitle = file.FileName,
+                            RealEstateId = domain.Id
+                        };
+                        files.ImageData = target.ToArray();
+                        
+                        _context.FileToDatabases.Add(files);
+                    }
+                }
+            }
+        }
     }
 }

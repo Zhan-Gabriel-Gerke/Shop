@@ -9,12 +9,15 @@ namespace ShopTARgv24.ApplicationServices.Services;
 public class RealEstateServices : IRealEstateServices
 {
     private readonly ShopTARgv24Context context;
+    private readonly IFileServices _fileServices;
 
     public RealEstateServices(
-        ShopTARgv24Context context
+        ShopTARgv24Context context,
+        IFileServices fileServices
     )
     {
         this.context = context;
+        _fileServices = fileServices;
     }
 
     public async Task<RealEstate> DetailAsync(Guid? id)
@@ -34,7 +37,13 @@ public class RealEstateServices : IRealEstateServices
         realEstate.BuildingType = dto.BuildingType;
         realEstate.CreatedAt = DateTime.Now;
         realEstate.ModifiedAt = DateTime.Now;
+
+        if (dto.Files != null)
+        {
+            _fileServices.UploadFilesToDatabase(dto, realEstate);
+        }
         
+        _fileServices.UploadFilesToDatabase(dto, realEstate);
         await context.RealEstates.AddAsync(realEstate);
         await context.SaveChangesAsync();
         

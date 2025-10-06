@@ -12,15 +12,18 @@ public class RealEstateController : Controller
 {
     private readonly ShopTARgv24Context _context;
     private readonly IRealEstateServices _realEstateServices;
+    
 
     public RealEstateController
     (
         ShopTARgv24Context context,
         IRealEstateServices realEstateServices
+        
     )
     {
         _context = context;
         _realEstateServices = realEstateServices;
+        
     }
     [HttpGet]
     public IActionResult Index()
@@ -57,7 +60,16 @@ public class RealEstateController : Controller
             RoomNumber = vm.RoomNumber,
             BuildingType = vm.BuildingType,
             CreatedAt = vm.CreatedAt,
-            ModifiedAt = vm.ModifiedAt
+            ModifiedAt = vm.ModifiedAt,
+            Files = vm.Files,
+            Image = vm.Image
+                .Select(x => new FileToDatabaseDto()
+                {
+                    Id = x.Id,
+                    ImageTitle = x.ImageTitle,
+                    ImageData = x.ImageData,
+                    RealEstateId = x.RealEstateId
+                }).ToArray()
         };
 
         var result = await _realEstateServices.Create(dto);
