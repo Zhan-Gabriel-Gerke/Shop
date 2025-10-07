@@ -115,6 +115,7 @@ namespace ShopTARgv24.ApplicationServices.Services
                             ImageTitle = file.FileName,
                             RealEstateId = domain.Id
                         };
+                        file.CopyTo(target);
                         files.ImageData = target.ToArray();
                         
                         _context.FileToDatabases.Add(files);

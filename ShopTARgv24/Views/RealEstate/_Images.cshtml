@@ -1,6 +1,6 @@
 ﻿@model ShopTARgv24.Models.RealEstate.ImageViewModel
 
-<div class="form-group row col-sm-4 col-sm-4 offset-2">
-    <div>@Model.ImageTitle</div>
-    <img src="card-img-top" src="@Model.Image" asp-append-version="true">
+<div class="form-group col-sm-4 offset-2">
+    <h5>@Model.ImageTitle</h5>
+    <img class="card-img-top" src="@Model.Images" alt="@Model.ImageTitle">
 </div>

@@ -62,7 +62,7 @@ public class RealEstateController : Controller
             CreatedAt = vm.CreatedAt,
             ModifiedAt = vm.ModifiedAt,
             Files = vm.Files,
-            Image = vm.Image
+            Image = vm.Images
                 .Select(x => new FileToDatabaseDto()
                 {
                     Id = x.Id,
@@ -119,7 +119,7 @@ public class RealEstateController : Controller
 
     [HttpGet]
 
-    public async Task<IActionResult> Update(Guid? id)
+    public async Task<IActionResult> Update(Guid id)
     {
         var realEstate = await _realEstateServices.DetailAsync(id);
 
@@ -127,7 +127,7 @@ public class RealEstateController : Controller
         {
             return NotFound();
         }
-
+        var photos = await ShowImage(id);
         var vm = new RealEstateCreateUpdateViewModel();
 
         vm.Id = realEstate.Id;
@@ -137,6 +137,8 @@ public class RealEstateController : Controller
         vm.BuildingType = realEstate.BuildingType;
         vm.CreatedAt = realEstate.CreatedAt;
         vm.ModifiedAt = realEstate.ModifiedAt;
+        vm.Images.AddRange(photos);
+        
         
         return View("CreateUpdate" ,vm);
     }
@@ -153,7 +155,15 @@ public class RealEstateController : Controller
             RoomNumber = vm.RoomNumber,
             BuildingType = vm.BuildingType,
             CreatedAt = vm.CreatedAt,
-            ModifiedAt = vm.ModifiedAt
+            ModifiedAt = vm.ModifiedAt,
+            Image = vm.Images
+                .Select(x => new FileToDatabaseDto
+                {
+                    Id = x.Id,
+                    ImageTitle = x.ImageTitle,
+                    ImageData = x.ImageData,
+                    RealEstateId = x.RealEstateId
+                }).ToArray()
         };
         
         var result = await _realEstateServices.Update(dto);
@@ -167,7 +177,7 @@ public class RealEstateController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Details(Guid? id)
+    public async Task<IActionResult> Details(Guid id)
     {
         var realEstates = await _realEstateServices.DetailAsync(id);
 
@@ -175,9 +185,11 @@ public class RealEstateController : Controller
         {
             return NotFound();
         }
+
+        var photos = await ShowImage(id);
         
         var vm = new RealEstateDetailsViewModel();
-
+        
         vm.Id = realEstates.Id;
         vm.Area = realEstates.Area;
         vm.Location = realEstates.Location;
@@ -185,7 +197,23 @@ public class RealEstateController : Controller
         vm.BuildingType = realEstates.BuildingType;
         vm.CreatedAt = realEstates.CreatedAt;
         vm.ModifiedAt = realEstates.ModifiedAt;
+        vm.Image.AddRange(photos);
 
         return View(vm);
+    }
+
+    public async Task<ImageViewModel[]> ShowImage(Guid id)
+    {
+        var images = await _context.FileToDatabases
+            .Where(x => x.RealEstateId == id)
+            .Select(y => new ImageViewModel()
+            {
+                RealEstateId = y.Id,
+                Id = y.Id,
+                ImageData = y.ImageData,
+                ImageTitle = y.ImageTitle,
+                Images = string.Format("data:image/gif;base64, {0}", Convert.ToBase64String(y.ImageData))
+            }).ToArrayAsync();
+        return images;
     }
 }

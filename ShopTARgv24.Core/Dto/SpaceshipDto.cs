@@ -12,8 +12,6 @@ namespace ShopTARgv24.Core.Dto
         public int? EnginePower { get; set; }
         public int? Passengers { get; set; }
         public int? InnerVolume { get; set; }
-
-        //Tuleb teha muutuja Files ja see peab olema listis
         public List<IFormFile> Files { get; set; }
 
         public IEnumerable<FileToApiDto> FileToApiDtos { get; set; }

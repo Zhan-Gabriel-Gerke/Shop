@@ -43,7 +43,6 @@ public class RealEstateServices : IRealEstateServices
             _fileServices.UploadFilesToDatabase(dto, realEstate);
         }
         
-        _fileServices.UploadFilesToDatabase(dto, realEstate);
         await context.RealEstates.AddAsync(realEstate);
         await context.SaveChangesAsync();
         
@@ -76,6 +75,8 @@ public class RealEstateServices : IRealEstateServices
         domain.BuildingType = dto.BuildingType;
         domain.CreatedAt = dto.CreatedAt;
         domain.ModifiedAt = DateTime.Now;
+        
+        _fileServices.UploadFilesToDatabase(dto, domain);
         
         context.RealEstates.Update(domain);
         await context.SaveChangesAsync();
