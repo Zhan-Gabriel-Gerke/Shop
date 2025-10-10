@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ShopTARgv24.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6adac8377ea839501f9edc49667ea338443d16ec")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ce6bd62f46bcde3ebfd5c49018c474a66d16956c")]
 [assembly: System.Reflection.AssemblyProductAttribute("ShopTARgv24.Data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ShopTARgv24.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
