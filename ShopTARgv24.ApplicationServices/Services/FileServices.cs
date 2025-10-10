@@ -101,7 +101,7 @@ namespace ShopTARgv24.ApplicationServices.Services
 
             return null;
         }
-        public void UploadFilesToDatabase(RealEstateDto dto, RealEstate domain)
+        public void UploadFilesToDatabase(KindergartenDto dto, Kindergarten domain)
         {
             if (dto.Files != null && dto.Files.Count > 0)
             {
@@ -113,7 +113,7 @@ namespace ShopTARgv24.ApplicationServices.Services
                         {
                             Id = Guid.NewGuid(),
                             ImageTitle = file.FileName,
-                            RealEstateId = domain.Id
+                            KindergartenId = domain.KindergartenId
                         };
                         file.CopyTo(target);
                         files.ImageData = target.ToArray();

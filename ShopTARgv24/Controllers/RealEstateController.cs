@@ -29,7 +29,7 @@ public class RealEstateController : Controller
     public IActionResult Index()
     {
         var result = _context.RealEstates
-            .Select(x => new RealEstateIndexView
+            .Select(x => new KindergartenIndexView
             {
                 Id = x.Id,
                 Area = x.Area,
@@ -191,7 +191,7 @@ public class RealEstateController : Controller
 
         ImageViewModel[] photos = await ShowImage(id);
         
-        var vm = new RealEstateDetailsViewModel();
+        var vm = new KindergartenDetailsViewModel();
         
         vm.Id = realEstates.Id;
         vm.Area = realEstates.Area;

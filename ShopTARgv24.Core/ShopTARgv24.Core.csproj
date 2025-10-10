@@ -10,4 +10,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="ServiceInterface\IRealEstateServices.cs" />
+    <Compile Remove="Dto\RealEstateDto.cs" />
+    <Compile Remove="Domain\RealEstate.cs" />
+  </ItemGroup>
+
 </Project>

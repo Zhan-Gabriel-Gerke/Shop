@@ -51,7 +51,7 @@ namespace ShopTARgv24.Data.Migrations
                     b.Property<string>("ImageTitle")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("RealEstateId")
+                    b.Property<Guid?>("KindergartenId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -59,33 +59,33 @@ namespace ShopTARgv24.Data.Migrations
                     b.ToTable("FileToDatabases");
                 });
 
-            modelBuilder.Entity("ShopTARgv24.Core.Domain.RealEstate", b =>
+            modelBuilder.Entity("ShopTARgv24.Core.Domain.Kindergarten", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("KindergartenId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<double?>("Area")
-                        .HasColumnType("float");
-
-                    b.Property<string>("BuildingType")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("ChildrenCount")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Location")
+                    b.Property<string>("GroupName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("KindergartenName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("RoomNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("TeacherName")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("KindergartenId");
 
-                    b.ToTable("RealEstates");
+                    b.ToTable("Kindergartens");
                 });
 
             modelBuilder.Entity("ShopTARgv24.Core.Domain.Spaceship", b =>

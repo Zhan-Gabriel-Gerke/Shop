@@ -13,6 +13,8 @@
     <None Include="wwwroot\multipleFileUpload\701ed21d-9ee3-46be-a3d7-176d87ec6e7e_ScipioAfricanus.jpg" />
     <None Include="wwwroot\multipleFileUpload\c399e0c7-fc3e-49d8-9c96-8988486e4036_rocinante.jfif" />
     <None Include="wwwroot\multipleFileUpload\eee70271-f5dd-45bb-ac5b-6b2ea43796da_ScipioAfricanus.jpg" />
+    <None Remove="Models\RealEstate\**" />
+    <None Remove="Views\RealEstate\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,8 +31,27 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Kindergarten\" />
-    <Folder Include="Views\Kindergarten\" />
+    <Compile Remove="Controllers\RealEstateController.cs" />
+    <Compile Remove="Models\RealEstate\**" />
+    <Compile Remove="Views\RealEstate\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Models\RealEstate\**" />
+    <EmbeddedResource Remove="Views\RealEstate\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Models\RealEstate\**" />
+    <Content Remove="Views\RealEstate\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\RealEstate\CreateUpdate.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\RealEstate\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\RealEstate\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\RealEstate\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\RealEstate\_Images.cshtml" />
   </ItemGroup>
 
 </Project>
