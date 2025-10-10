@@ -84,7 +84,7 @@ public class RealEstateController : Controller
 
     [HttpGet]
 
-    public async Task<IActionResult> Delete(Guid? id)
+    public async Task<IActionResult> Delete(Guid id)
     {
         var realEstate = await _realEstateServices.DetailAsync(id);
 
@@ -93,6 +93,7 @@ public class RealEstateController : Controller
             return NotFound();
         }
 
+        ImageViewModel[] photos = await ShowImage(id);
         var vm = new RealEstateDeleteViewModel();
 
         vm.Id = realEstate.Id;
@@ -127,7 +128,8 @@ public class RealEstateController : Controller
         {
             return NotFound();
         }
-        var photos = await ShowImage(id);
+
+        ImageViewModel[] photos = await ShowImage(id);
         var vm = new RealEstateCreateUpdateViewModel();
 
         vm.Id = realEstate.Id;
@@ -156,6 +158,7 @@ public class RealEstateController : Controller
             BuildingType = vm.BuildingType,
             CreatedAt = vm.CreatedAt,
             ModifiedAt = vm.ModifiedAt,
+            Files = vm.Files,
             Image = vm.Images
                 .Select(x => new FileToDatabaseDto
                 {
@@ -186,7 +189,7 @@ public class RealEstateController : Controller
             return NotFound();
         }
 
-        var photos = await ShowImage(id);
+        ImageViewModel[] photos = await ShowImage(id);
         
         var vm = new RealEstateDetailsViewModel();
         
