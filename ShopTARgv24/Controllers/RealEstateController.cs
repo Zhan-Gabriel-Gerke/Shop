@@ -103,6 +103,7 @@ public class RealEstateController : Controller
         vm.BuildingType = realEstate.BuildingType;
         vm.CreatedAt = realEstate.CreatedAt;
         vm.ModifiedAt = realEstate.ModifiedAt;
+        vm.Images.AddRange(photos);
         return View(vm);
     }
 
