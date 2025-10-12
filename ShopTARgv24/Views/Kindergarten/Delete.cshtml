@@ -54,6 +54,13 @@
         </div>
     </dl>
 
+    <div>
+        @foreach (var images in Model.Images)
+        {
+            <partial name="_Images" model="images"/>
+        }
+    </div>
+    
     <form asp-action="DeleteConfirmation">
         <input type="hidden" asp-for="KindergartenId" />
         <input type="submit" value="Delete" class="btn btn-danger" />

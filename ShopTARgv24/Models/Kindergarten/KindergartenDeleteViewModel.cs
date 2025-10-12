@@ -7,8 +7,8 @@
         public int? ChildrenCount { get; set; }
         public string? KindergartenName { get; set; }
         public string? TeacherName { get; set; }
-        public List<KindergartenIndexView> Images { get; set; }
-            = new List<KindergartenIndexView>();
+        public List<ImageViewModel> Images { get; set; }
+            = new List<ImageViewModel>();
         public DateTime? CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
     }

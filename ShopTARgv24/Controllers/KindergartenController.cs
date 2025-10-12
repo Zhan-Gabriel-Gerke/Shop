@@ -102,6 +102,7 @@ public class KindergartenController : Controller
         vm.TeacherName = kindergarten.TeacherName;
         vm.CreatedAt = kindergarten.CreatedAt;
         vm.ModifiedAt = kindergarten.ModifiedAt;
+        vm.Images.AddRange(photos);
         return View(vm);
     }
 
