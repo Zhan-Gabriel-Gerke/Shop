@@ -11,18 +11,21 @@ public class KindergartenController : Controller
 {
     private readonly ShopTARgv24Context _context;
     private readonly IKindergartenServices _kindergartenServices;
+    private readonly IFileServices _fileServices;
     
 
     public KindergartenController
     (
         ShopTARgv24Context context,
-        IKindergartenServices kindergartenServices
+        IKindergartenServices kindergartenServices, 
+        IFileServices fileServices
         
     )
     {
         _context = context;
         _kindergartenServices = kindergartenServices;
-        
+        _fileServices = fileServices;
+
     }
     [HttpGet]
     public IActionResult Index()
@@ -218,5 +221,22 @@ public class KindergartenController : Controller
                 Images = string.Format("data:image/gif;base64, {0}", Convert.ToBase64String(y.ImageData))
             }).ToArrayAsync();
         return images;
+    }
+    [HttpPost]
+    public async Task<IActionResult> RemoveImage(ImageViewModel vm)
+    {
+        var dto = new FileToDatabaseDto()
+        {
+            Id = vm.Id
+        };
+
+        var image = await _fileServices.RemoveImageFromDatabase(dto);
+
+        if (image == null)
+        {
+            return RedirectToAction(nameof(Index));
+        }
+
+        return RedirectToAction(nameof(Index));
     }
 }
