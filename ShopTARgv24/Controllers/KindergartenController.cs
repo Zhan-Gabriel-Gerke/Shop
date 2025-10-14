@@ -187,7 +187,7 @@ namespace ShopTARgv24.Controllers
                 return NotFound();
             }
 
-            var photos = await ShowImage(id);
+            ImageViewModel[] images = await ShowImage(id);
             var vm = new KindergartenDetailsViewModel
             {
                 KindergartenId = kindergarten.KindergartenId,
@@ -198,7 +198,7 @@ namespace ShopTARgv24.Controllers
                 CreatedAt = kindergarten.CreatedAt,
                 ModifiedAt = kindergarten.ModifiedAt
             };
-            vm.Image.AddRange(photos);
+            vm.Image.AddRange(images);
 
             return View(vm);
         }
