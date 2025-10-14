@@ -1,4 +1,5 @@
-﻿@model ShopTARgv24.Models.Kindergarten.KindergartenCreateUpdateViewModel
+﻿@using ShopTARgv24.Models.Kindergarten
+@model ShopTARgv24.Models.Kindergarten.KindergartenCreateUpdateViewModel
 
 
 @if (Model.KindergartenId.HasValue)
@@ -53,6 +54,17 @@ else
             </div>
         </div>
         
+        <div>
+            @foreach (var images in Model.Images)
+            {
+                <partial name="_Images" model="images" />
+                <div class="d-flex align-items-center mb-3">
+                    <partial name="_Images" model="images" />
+                    <input asp-action="removeImage" asp-controller="Kindergarten" asp-route-imageId="@images.Id"
+                           type="submit" class="btn btn-danger ms-3" value="Delete" />
+                </div>
+            }
+        </div>
         <div>
             @foreach (var images in Model.Images)
             {

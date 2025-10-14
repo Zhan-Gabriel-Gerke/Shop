@@ -60,7 +60,19 @@ public class KindergartenServices : IKindergartenServices
         
         context.Kindergartens.Remove(kindergarten);
         await context.SaveChangesAsync();
-        
+        var images = await context.FileToDatabases
+            .Where(x => x.KindergartenId == id)
+            .Select(y => new FileToDatabaseDto
+            {
+                Id = y.Id,
+                ImageData = y.ImageData,
+                ImageTitle = y.ImageTitle,
+                KindergartenId = y.KindergartenId
+            }).ToArrayAsync();
+
+        await _fileServices.RemoveImageFromDatabase(images);
+        context.Kindergartens.Remove(kindergarten);
+        await context.SaveChangesAsync();
         return kindergarten;
     }
 
@@ -83,4 +95,5 @@ public class KindergartenServices : IKindergartenServices
         
         return domain;
     }
+    
 }
