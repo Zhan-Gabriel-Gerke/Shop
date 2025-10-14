@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ShopTARgv24.Core.Domain;
 using ShopTARgv24.Core.ServiceInterface;
 using ShopTARgv24.Data;
 using ShopTARgv24.Models.Kindergarten;
-using Microsoft.EntityFrameworkCore;
-using ShopTARgv24.Core.Dto;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using ShopTARgv24.Core.Dto;
 
 namespace ShopTARgv24.Controllers
 {
@@ -28,6 +27,7 @@ namespace ShopTARgv24.Controllers
             _fileServices = fileServices;
         }
 
+        // ... методы Index, Create, DeleteConfirmation ...
         [HttpGet]
         public IActionResult Index()
         {
@@ -46,8 +46,9 @@ namespace ShopTARgv24.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            var vm = new KindergartenCreateUpdateViewModel();
-            return View("CreateUpdate", vm);
+            KindergartenCreateUpdateViewModel result = new();
+
+            return View("CreateUpdate", result);
         }
 
         [HttpPost]
@@ -74,11 +75,48 @@ namespace ShopTARgv24.Controllers
             };
 
             var result = await _kindergartenServices.Create(dto);
+
             if (result == null)
             {
                 return RedirectToAction(nameof(Index));
             }
 
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var kindergarten = await _kindergartenServices.DetailAsync(id);
+
+            if (kindergarten == null)
+            {
+                return NotFound();
+            }
+
+            ImageViewModel[] photos = await ShowImage(id);
+            var vm = new KindergartenDeleteViewModel();
+
+            vm.KindergartenId = kindergarten.KindergartenId;
+            vm.GroupName = kindergarten.GroupName;
+            vm.ChildrenCount = kindergarten.ChildrenCount;
+            vm.KindergartenName = kindergarten.KindergartenName;
+            vm.TeacherName = kindergarten.TeacherName;
+            vm.CreatedAt = kindergarten.CreatedAt;
+            vm.ModifiedAt = kindergarten.ModifiedAt;
+            vm.Images.AddRange(photos);
+            return View(vm);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteConfirmation(Guid kindergartenId)
+        {
+            var kindergarten = await _kindergartenServices.Delete(kindergartenId);
+
+            if (kindergarten == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
             return RedirectToAction(nameof(Index));
         }
 
@@ -101,7 +139,7 @@ namespace ShopTARgv24.Controllers
                 KindergartenName = kindergarten.KindergartenName,
                 TeacherName = kindergarten.TeacherName,
                 CreatedAt = kindergarten.CreatedAt,
-                ModifiedAt = kindergarten.ModifiedAt,
+                ModifiedAt = kindergarten.ModifiedAt
             };
             vm.Images.AddRange(photos);
 
@@ -137,7 +175,7 @@ namespace ShopTARgv24.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index), vm);
         }
 
         [HttpGet]
@@ -158,57 +196,22 @@ namespace ShopTARgv24.Controllers
                 KindergartenName = kindergarten.KindergartenName,
                 TeacherName = kindergarten.TeacherName,
                 CreatedAt = kindergarten.CreatedAt,
-                ModifiedAt = kindergarten.ModifiedAt,
+                ModifiedAt = kindergarten.ModifiedAt
             };
             vm.Image.AddRange(photos);
 
             return View(vm);
         }
-
-        [HttpGet]
-        public async Task<IActionResult> Delete(Guid id)
-        {
-            var kindergarten = await _kindergartenServices.DetailAsync(id);
-            if (kindergarten == null)
-            {
-                return NotFound();
-            }
-            
-            var photos = await ShowImage(id);
-            var vm = new KindergartenDeleteViewModel
-            {
-                KindergartenId = kindergarten.KindergartenId,
-                GroupName = kindergarten.GroupName,
-                ChildrenCount = kindergarten.ChildrenCount,
-                KindergartenName = kindergarten.KindergartenName,
-                TeacherName = kindergarten.TeacherName,
-                CreatedAt = kindergarten.CreatedAt,
-                ModifiedAt = kindergarten.ModifiedAt,
-            };
-            vm.Images.AddRange(photos);
-
-            return View(vm);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> DeleteConfirmation(Guid kindergartenId)
-        {
-            var result = await _kindergartenServices.Delete(kindergartenId);
-            if (result == null)
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            
-            return RedirectToAction(nameof(Index));
-        }
-
+        
+        // ИСПРАВЛЕННЫЙ МЕТОД
         public async Task<ImageViewModel[]> ShowImage(Guid id)
         {
             var images = await _context.FileToDatabases
                 .Where(x => x.KindergartenId == id)
-                .Select(y => new ImageViewModel()
+                .Select(y => new ImageViewModel
                 {
-                    Id = y.Id, // Убедитесь, что ID файла передается
+                    Id = y.Id, // ID самого файла
+                    KindergartenId = id, // ID родительского объекта (детского сада)
                     ImageData = y.ImageData,
                     ImageTitle = y.ImageTitle,
                     Images = $"data:image/jpeg;base64,{Convert.ToBase64String(y.ImageData)}"
@@ -217,24 +220,19 @@ namespace ShopTARgv24.Controllers
             return images;
         }
 
+        // ИСПРАВЛЕННЫЙ МЕТОД
         [HttpPost]
         public async Task<IActionResult> RemoveImage(ImageViewModel vm)
         {
-            var dto = new FileToDatabaseDto()
+            var dto = new FileToDatabaseDto
             {
                 Id = vm.Id
             };
 
-            // ИСПРАВЛЕННЫЙ ВЫЗОВ: создаем массив из одного элемента
-            var result = await _fileServices.RemoveImagesFromDatabase(new[] { dto });
+            // Вызываем метод для удаления
+            await _fileServices.RemoveImagesFromDatabase(new[] { dto });
 
-            if (result == null)
-            {
-                // Можно добавить обработку ошибки, если нужно
-                return RedirectToAction(nameof(Index));
-            }
-            
-            // После удаления изображения лучше вернуться на страницу редактирования
+            // Перенаправляем обратно на страницу редактирования, используя ID из модели
             return RedirectToAction(nameof(Update), new { id = vm.KindergartenId });
         }
     }

@@ -1,86 +1,70 @@
-﻿@using ShopTARgv24.Models.Kindergarten
-@model ShopTARgv24.Models.Kindergarten.KindergartenCreateUpdateViewModel
+﻿@model ShopTARgv24.Models.Kindergarten.KindergartenCreateUpdateViewModel
 
-
-@if (Model.KindergartenId.HasValue)
-{
-    <h1>Update</h1>
-}
-else
-{
-    <h1>Create</h1>
+@{
+    string title = Model.KindergartenId == Guid.Empty ? "Create" : "Update";
+    ViewData["Title"] = title;
 }
 
-<div>
-    <form method="post" enctype="multipart/form-data">
-        <input asp-for="KindergartenId" type="hidden"/>
-        <input asp-for="CreatedAt" type="hidden"/>
-        <input asp-for="ModifiedAt" type="hidden"/>
+<h1>@title Kindergarten</h1>
 
-        <div class="form-group row">
-            <label asp-for="GroupName" class="col-sm-2 col-form-label"></label>
-            <div class="col-sm-10">
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="@title" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @if (title == "Update")
+            {
+                <input type="hidden" asp-for="KindergartenId" />
+            }
+
+            <div class="form-group mb-3">
+                <label asp-for="GroupName" class="control-label"></label>
                 <input asp-for="GroupName" class="form-control" />
+                <span asp-validation-for="GroupName" class="text-danger"></span>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label asp-for="ChildrenCount" class="col-sm-2 col-form-label"></label>
-            <div class="col-sm-10">
+            <div class="form-group mb-3">
+                <label asp-for="ChildrenCount" class="control-label"></label>
                 <input asp-for="ChildrenCount" class="form-control" />
+                <span asp-validation-for="ChildrenCount" class="text-danger"></span>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label asp-for="KindergartenName" class="col-sm-2 col-form-label"></label>
-            <div class="col-sm-10">
+            <div class="form-group mb-3">
+                <label asp-for="KindergartenName" class="control-label"></label>
                 <input asp-for="KindergartenName" class="form-control" />
+                <span asp-validation-for="KindergartenName" class="text-danger"></span>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label asp-for="TeacherName" class="col-sm-2 col-form-label"></label>
-            <div class="col-sm-10">
+            <div class="form-group mb-3">
+                <label asp-for="TeacherName" class="control-label"></label>
                 <input asp-for="TeacherName" class="form-control" />
+                <span asp-validation-for="TeacherName" class="text-danger"></span>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label asp-for="Images" class="col-sm-2 col-form-label"></label>
-            <div class="col-sm-5">
-                <div class="custom-file">
-                    <input class="form-control" asp-for="Files" multiple type="file" />
-                </div>
+            <div class="form-group mb-3">
+                <label asp-for="Files" class="control-label"></label>
+                <input asp-for="Files" type="file" class="form-control" multiple />
+                <span asp-validation-for="Files" class="text-danger"></span>
             </div>
-        </div>
-        
-        <div>
-            @foreach (var images in Model.Images)
-            {
-                <partial name="_Images" model="images" />
-                <div class="d-flex align-items-center mb-3">
-                    <partial name="_Images" model="images" />
-                    <input asp-action="removeImage" asp-controller="Kindergarten" asp-route-imageId="@images.Id"
-                           type="submit" class="btn btn-danger ms-3" value="Delete" />
-                </div>
-            }
-        </div>
-        <div>
-            @foreach (var images in Model.Images)
-            {
-                <partial name="_Images" model="images"/>
-            }
-        </div>
-        
-        @if (Model.KindergartenId.HasValue)
-        {
-            <input asp-action="update" asp-controller="Kindergarten" type="submit" class="btn btn-primary" value="Update" />
-        }
-        else
-        {
-            <input asp-action="create" asp-controller="Kindergarten" type="submit" class="btn btn-primary" value="Create" />
-        }
-        <a asp-action="Index" asp-controller="Kindergarten" class="btn btn-success">Back</a>
 
-    </form>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
 </div>
+
+@* Этот раздел отвечает за отображение существующих изображений *@
+@if (Model.Images.Any())
+{
+    <partial name="_Images" model="Model" />
+}
+
+<div class="mt-3">
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

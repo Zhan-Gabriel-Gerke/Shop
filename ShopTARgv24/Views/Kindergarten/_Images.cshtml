@@ -1,6 +1,27 @@
-﻿@model ShopTARgv24.Models.Kindergarten.ImageViewModel
+﻿@model ShopTARgv24.Models.Kindergarten.KindergartenCreateUpdateViewModel
 
-<div class="form-group col-sm-4 offset-2">
-    <h5>@Model.ImageTitle</h5>
-    <img class="card-img-top" src="@Model.Images" alt="@Model.ImageTitle">
-</div>
+@if (Model.Images.Any())
+{
+    <hr />
+    <h4>Existing Images</h4>
+    <div class="d-flex flex-wrap">
+        @foreach (var image in Model.Images)
+        {
+            <div class="card m-2" style="width: 18rem;">
+                <img src="@image.Images" class="card-img-top" style="height: 200px; object-fit: cover;" alt="@image.ImageTitle">
+                <div class="card-body text-center">
+                    <p class="card-text small text-muted">@image.ImageTitle</p>
+                    
+                    @* Для каждой кнопки создается своя форма *@
+                    <form asp-action="RemoveImage" method="post">
+                        @* Скрытое поле для ID изображения, которое нужно удалить *@
+                        <input type="hidden" name="Id" value="@image.Id" />
+                        @* Скрытое поле для ID детского сада, чтобы вернуться на нужную страницу *@
+                        <input type="hidden" name="KindergartenId" value="@Model.KindergartenId" />
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </div>
+            </div>
+        }
+    </div>
+}
