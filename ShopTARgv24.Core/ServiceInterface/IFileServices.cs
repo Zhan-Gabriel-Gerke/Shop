@@ -1,5 +1,7 @@
 ﻿using ShopTARgv24.Core.Domain;
 using ShopTARgv24.Core.Dto;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ShopTARgv24.Core.ServiceInterface
 {
@@ -8,8 +10,9 @@ namespace ShopTARgv24.Core.ServiceInterface
         void FilesToApi(SpaceshipDto dto, Spaceship spaceship);
         Task<FileToApi> RemoveImageFromApi(FileToApiDto dto);
         Task<List<FileToApi>> RemoveImagesFromApi(FileToApiDto[] dtos);
+
+        // Методы для Kindergarten
         void UploadFilesToDatabase(KindergartenDto dto, Kindergarten domain);
-        Task<FileToDatabase> RemoveImageFromDatabase(FileToDatabaseDto dto);
-        Task<FileToDatabase> RemoveImagesFromDatabase(FileToDatabaseDto[] dtos);
+        Task<List<FileToDatabase>> RemoveImagesFromDatabase(FileToDatabaseDto[] dtos);
     }
 }

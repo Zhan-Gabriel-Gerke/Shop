@@ -9,5 +9,6 @@
         public string? TeacherName { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
+        public ICollection<FileToDatabase>? Files { get; set; }
     }
 }
