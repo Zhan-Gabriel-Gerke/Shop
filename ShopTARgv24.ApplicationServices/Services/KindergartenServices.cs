@@ -47,7 +47,7 @@ namespace ShopTARgv24.ApplicationServices.Services
             return kindergarten;
         }
 
-        public async Task<Kindergarten> DetailAsync(Guid? id)
+        public async Task<Kindergarten> DetailAsync(Guid id)
         {
             var result = await _context.Kindergartens
                 .Include(k => k.Files) // Включаем связанные файлы для детального просмотра
@@ -86,7 +86,7 @@ namespace ShopTARgv24.ApplicationServices.Services
             return domain;
         }
 
-        public async Task<Kindergarten> Delete(Guid? id)
+        public async Task<Kindergarten> Delete(Guid id)
         {
             // 1. Находим садик вместе с его файлами
             var kindergarten = await _context.Kindergartens
