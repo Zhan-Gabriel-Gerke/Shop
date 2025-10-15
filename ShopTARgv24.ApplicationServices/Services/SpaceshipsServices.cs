@@ -66,7 +66,7 @@ namespace ShopTARgv24.ApplicationServices.Services
                     ExistingFilePath = y.ExistingFilePath
                 }).ToArrayAsync();
 
-            await _fileServices.RemoveImagesFromApi(images);
+            await _fileServices.RemoveImagesFromDatabase(images);
             _context.Spaceships.Remove(spaceship);
             await _context.SaveChangesAsync();
 

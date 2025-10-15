@@ -1,74 +1,80 @@
 ﻿@model ShopTARgv24.Models.Kindergarten.KindergartenCreateUpdateViewModel
 
-@{
-    // Определяем заголовок в зависимости от того, создаем мы или обновляем запись
-    string title = Model.KindergartenId == Guid.Empty ? "Create" : "Update";
-    ViewData["Title"] = title;
-}
-
-<h1>@title Kindergarten</h1>
-
-<hr />
-<div class="row">
-    <div class="col-md-8">
-        @* Основная форма для создания/обновления *@
-        <form asp-action="@title" method="post" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            @* Скрытое поле для Id, если мы обновляем запись *@
-            @if (title == "Update")
+<div class="container mt-5">
+    <div class="col-lg-8 mx-auto">
+        <div class="card shadow-lg border-0 rounded-3">
+            @if (Model.KindergartenId.HasValue)
             {
-                <input type="hidden" asp-for="KindergartenId" />
+                <div class="card-header bg-primary text-white text-center">
+                    <h1>Update</h1>
+                </div>
             }
+            else
+            {
+                <div class="card-header bg-success text-white text-center">
+                    <h1>Create</h1>
+                </div>
+            }
+            <div class="card-body p-4">
+                <form method="post" enctype="multipart/form-data">
+                    <input asp-for="KindergartenId" type="hidden" />
+                    <input asp-for="CreatedAt" type="hidden" />
+                    <input asp-for="ModifiedAt" type="hidden" />
 
-            <div class="form-group mb-3">
-                <label asp-for="GroupName" class="control-label"></label>
-                <input asp-for="GroupName" class="form-control" />
-                <span asp-validation-for="GroupName" class="text-danger"></span>
+                    <div class="form-group row m-3">
+                        <label asp-for="GroupName" class="col-sm-3 col-form-label">Group name</label>
+                        <div class="col-sm-9">
+                            <input asp-for="GroupName" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group row m-3">
+                        <label asp-for="ChildrenCount" class="col-sm-3 col-form-label">Children count</label>
+                        <div class="col-sm-9">
+                            <input asp-for="ChildrenCount" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group row m-3">
+                        <label asp-for="KindergartenName" class="col-sm-3 col-form-label">Kindergarten name</label>
+                        <div class="col-sm-9">
+                            <input asp-for="KindergartenName" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group row m-3">
+                        <label asp-for="TeacherName" class="col-sm-3 col-form-label">Teacher name</label>
+                        <div class="col-sm-9">
+                            <input asp-for="TeacherName" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group row m-3">
+                        <label asp-for="Files" class="col-sm-3 col-form-label"></label>
+                        <div class="col-sm-9">
+                            <div class="custom-file">
+                                <input class="form-control" asp-for="Files" multiple type="file" />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        @foreach (var images in Model.Images)
+                        {
+                            <div class="d-flex align-items-center mb-3">
+                                <partial name="_Images" model="images" />
+                                <input asp-action="RemoveImage" asp-controller="Kindergarten" asp-route-imageId="@images.Id"
+                                       type="submit" class="btn btn-danger ms-3" value="Delete" />
+                            </div>
+                        }
+                    </div>
+                    <br />
+                    @if (Model.KindergartenId.HasValue)
+                    {
+                        <input asp-action="update" asp-controller="Kindergarten" type="submit" class="btn btn-success m-2" value="Update" />
+                    }
+                    else
+                    {
+                        <input asp-action="create" asp-controller="Kindergarten" type="submit" class="btn btn-success m-2" value="Create" />
+                    }
+                    <a asp-action="Index" asp-controller="Kindergarten" class="btn btn-secondary m-2">Back</a>
+                </form>
             </div>
-
-            <div class="form-group mb-3">
-                <label asp-for="ChildrenCount" class="control-label"></label>
-                <input asp-for="ChildrenCount" class="form-control" />
-                <span asp-validation-for="ChildrenCount" class="text-danger"></span>
-            </div>
-
-            <div class="form-group mb-3">
-                <label asp-for="KindergartenName" class="control-label"></label>
-                <input asp-for="KindergartenName" class="form-control" />
-                <span asp-validation-for="KindergartenName" class="text-danger"></span>
-            </div>
-
-            <div class="form-group mb-3">
-                <label asp-for="TeacherName" class="control-label"></label>
-                <input asp-for="TeacherName" class="form-control" />
-                <span asp-validation-for="TeacherName" class="text-danger"></span>
-            </div>
-
-            <div class="form-group mb-3">
-                <label asp-for="Files" class="control-label">Add Images</label>
-                <input asp-for="Files" type="file" class="form-control" multiple />
-                <span asp-validation-for="Files" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
-
-@* Этот раздел отображает существующие изображения только в режиме обновления.
-  Он использует _Images.cshtml, который мы исправляли ранее.
-*@
-@if (Model.Images.Any())
-{
-    <hr />
-    <partial name="_Images" model="Model" />
-}
-
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

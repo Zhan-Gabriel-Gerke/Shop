@@ -192,7 +192,7 @@ public class KindergartenController : Controller
             return NotFound();
         }
 
-        ImageViewModel[] photos = await ShowImage(id);
+        ImageViewModel[] images = await ShowImage(id);
         
         var vm = new KindergartenDetailsViewModel();
         
@@ -203,7 +203,7 @@ public class KindergartenController : Controller
         vm.TeacherName = kindergarten.TeacherName;
         vm.CreatedAt = kindergarten.CreatedAt;
         vm.ModifiedAt = kindergarten.ModifiedAt;
-        vm.Image.AddRange(photos);
+        vm.Image.AddRange(images);
 
         return View(vm);
     }
@@ -214,7 +214,7 @@ public class KindergartenController : Controller
             .Where(x => x.KindergartenId == id)
             .Select(y => new ImageViewModel()
             {
-                KindergartenId = y.Id,
+                KindergartenId = y.KindergartenId,
                 Id = y.Id,
                 ImageData = y.ImageData,
                 ImageTitle = y.ImageTitle,
@@ -223,7 +223,8 @@ public class KindergartenController : Controller
         return images;
     }
     [HttpPost]
-    public async Task<IActionResult> RemoveImage(ImageViewModel vm)
+    [HttpPost]
+    public async Task<IActionResult> RemovesImage(ImageViewModel vm)
     {
         var dto = new FileToDatabaseDto()
         {
@@ -236,7 +237,24 @@ public class KindergartenController : Controller
         {
             return RedirectToAction(nameof(Index));
         }
+ 
+        return RedirectToAction(nameof(Index));
+    }
+    
+    public async Task<IActionResult> RemoveImage(ImageViewModel vm)
+    {
+        var dto = new FileToDatabaseDto()
+        {
+            KindergartenId = vm.KindergartenId
+        };
 
+        var image = await _fileServices.RemoveImageFromDatabase(dto);
+
+        if (image == null)
+        {
+            return RedirectToAction(nameof(Index));
+        }
+ 
         return RedirectToAction(nameof(Index));
     }
 }

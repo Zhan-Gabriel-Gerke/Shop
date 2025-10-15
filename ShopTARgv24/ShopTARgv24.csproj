@@ -15,6 +15,8 @@
     <None Include="wwwroot\multipleFileUpload\eee70271-f5dd-45bb-ac5b-6b2ea43796da_ScipioAfricanus.jpg" />
     <None Remove="Models\RealEstate\**" />
     <None Remove="Views\RealEstate\**" />
+    <None Remove="Views\Spaceships\**" />
+    <None Remove="Models\Spaceships\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,16 +36,23 @@
     <Compile Remove="Controllers\RealEstateController.cs" />
     <Compile Remove="Models\RealEstate\**" />
     <Compile Remove="Views\RealEstate\**" />
+    <Compile Remove="Views\Spaceships\**" />
+    <Compile Remove="Models\Spaceships\**" />
+    <Compile Remove="Controllers\SpaceshipsController.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Remove="Models\RealEstate\**" />
     <EmbeddedResource Remove="Views\RealEstate\**" />
+    <EmbeddedResource Remove="Views\Spaceships\**" />
+    <EmbeddedResource Remove="Models\Spaceships\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Remove="Models\RealEstate\**" />
     <Content Remove="Views\RealEstate\**" />
+    <Content Remove="Views\Spaceships\**" />
+    <Content Remove="Models\Spaceships\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -52,6 +61,11 @@
     <_ContentIncludedByDefault Remove="Views\RealEstate\Details.cshtml" />
     <_ContentIncludedByDefault Remove="Views\RealEstate\Index.cshtml" />
     <_ContentIncludedByDefault Remove="Views\RealEstate\_Images.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Spaceships\CreateUpdate.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Spaceships\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Spaceships\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Spaceships\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Spaceships\_Images.cshtml" />
   </ItemGroup>
 
 </Project>

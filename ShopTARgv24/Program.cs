@@ -13,8 +13,7 @@ namespace ShopTARgv24
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
-            builder.Services.AddScoped<ISpaceshipsServices, SpaceshipsServices>();
+            
             builder.Services.AddScoped<IFileServices, FileServices>();
             builder.Services.AddScoped<IKindergartenServices, KindergartenServices>();
 

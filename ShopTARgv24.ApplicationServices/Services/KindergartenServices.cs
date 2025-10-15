@@ -88,31 +88,22 @@ namespace ShopTARgv24.ApplicationServices.Services
 
         public async Task<Kindergarten> Delete(Guid id)
         {
-            // 1. Находим садик вместе с его файлами
             var kindergarten = await _context.Kindergartens
-                .Include(k => k.Files)
                 .FirstOrDefaultAsync(x => x.KindergartenId == id);
 
-            if (kindergarten == null)
-            {
-                return null;
-            }
-
-            // 2. Если есть связанные файлы, передаем их DTO в сервис для удаления
-            if (kindergarten.Files != null && kindergarten.Files.Any())
-            {
-                var filesToDelete = kindergarten.Files.Select(file => new FileToDatabaseDto
+            var images = await _context.FileToDatabases
+                .Where(x => x.KindergartenId == id)
+                .Select(y => new FileToDatabaseDto
                 {
-                    Id = file.Id
-                }).ToArray();
+                    Id = y.Id,
+                    ImageData = y.ImageData,
+                    ImageTitle = y.ImageTitle,
+                    KindergartenId = y.KindergartenId
+                }).ToArrayAsync();
 
-                await _fileServices.RemoveImagesFromDatabase(filesToDelete);
-            }
+            await _fileServices.RemoveImagesFromDatabase(images);
 
-            // 3. Удаляем саму запись о садике
             _context.Kindergartens.Remove(kindergarten);
-            
-            // 4. Сохраняем все изменения в базе данных одной транзакцией
             await _context.SaveChangesAsync();
 
             return kindergarten;

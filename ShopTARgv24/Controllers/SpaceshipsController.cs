@@ -247,7 +247,7 @@ namespace ShopTARgv24.Controllers
             };
 
             //tuleb esile kutsuda removeImageFromApi meetod
-            var image = await _fileServices.RemoveImageFromApi(dto);
+            var image = await _fileServices.RemoveImageFromDatabase(dto);
 
             //kui image on null, siis returnib Index vaatele
             if (image == null)
