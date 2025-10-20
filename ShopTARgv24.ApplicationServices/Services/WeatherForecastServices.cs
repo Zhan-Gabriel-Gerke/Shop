@@ -16,19 +16,25 @@ public class WeatherForecastServices : IWeatherForecastServices
             httpClient.BaseAddress = new Uri(baseUrl);
             httpClient.DefaultRequestHeaders.Accept.Clear();
             httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            // GetAsync($"{127964} - Tallina LocationKey
+            // GetAsync($"{127964} - Tallinna LocationKey
             var response = await httpClient.GetAsync($"{127964}?apikey={accuApiKey}&details=true");
             if (response.IsSuccessStatusCode)
             {
                 var jsonResponse = await response.Content.ReadAsStringAsync();
-                var weatherData = JsonSerializer.Deserialize<AccuLocationWeatherResultDto>(jsonResponse);
-                return weatherData;
+                var weatherData = JsonSerializer.Deserialize<AccuLocationRootDto>(jsonResponse);
+                //
+
+                dto.LocalObservationDateTime = weatherData.LocalObservationDateTime;
+                dto.Text = weatherData.WeatherText;
+                dto.TempMetricValueUnit = weatherData.Temperature.Metric.Value;
+                
             }
             else
             {
                 // Handle error response
                 throw new Exception("Error fetching weather data");
             }
+            return dto;
         }
     }
 }
