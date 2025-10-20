@@ -8,7 +8,7 @@ public class WeatherForecastServices : IWeatherForecastServices
 {
     public async Task<AccuLocationWeatherResultDto> AccuWeatherResult(AccuLocationWeatherResultDto dto)
     {
-        string accuApiKey = "<your_api>";
+        string accuApiKey = "zpka_adc4c9edc9274b73b45ce227941bb983_c4c61d7c";
         string baseUrl = "http://dataservice.accuweather.com/forecasts/v1/daily/1day/";
 
         using (var httpClient = new HttpClient())
