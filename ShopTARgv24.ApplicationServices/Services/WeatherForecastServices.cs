@@ -24,10 +24,10 @@ public class WeatherForecastServices : IWeatherForecastServices
                 var weatherData = JsonSerializer.Deserialize<AccuLocationRootDto>(jsonResponse);
                 //
 
-                dto.LocalObservationDateTime = weatherData.LocalObservationDateTime;
-                dto.Text = weatherData.WeatherText;
-                dto.TempMetricValueUnit = weatherData.Temperature.Metric.Value;
-                
+                dto.EndDate = weatherData.Headline.EndDate;
+                dto.Text = weatherData.Headline.Text;
+                dto.TempMetricValueUnit = weatherData.DailyForecasts[0].Temperature.Maximum.Value;
+
             }
             else
             {

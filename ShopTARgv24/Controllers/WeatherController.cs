@@ -25,6 +25,11 @@ public class WeatherController : Controller
         return View();
     }
 
+    public IActionResult Index()
+    {
+        return View();
+    }
+    
     public IActionResult City(string city)
     {
         AccuLocationWeatherResultDto dto = new AccuLocationWeatherResultDto();
@@ -37,7 +42,7 @@ public class WeatherController : Controller
         
         vm.TempMetricValueUnit = dto.TempMetricValueUnit;
         vm.Text = dto.Text;
-        vm.LocalObservationDateTime = dto.LocalObservationDateTime;
+        vm.EndDate = dto.EndDate;
             
         return View(vm);
     }
