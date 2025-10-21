@@ -30,9 +30,4 @@
     <ProjectReference Include="..\ShopTARgv24.Data\ShopTARgv24.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\Chucknorris\" />
-    <Folder Include="Views\Chucknorris\" />
-  </ItemGroup>
-
 </Project>
