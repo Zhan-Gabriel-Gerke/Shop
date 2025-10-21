@@ -236,3 +236,7 @@ C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\obj\Debug\net9.
 C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\obj\Debug\net9.0\ShopTARgv24.pdb
 C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\obj\Debug\net9.0\ShopTARgv24.genruntimeconfig.cache
 C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\obj\Debug\net9.0\ref\ShopTARgv24.dll
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.0\Microsoft.Extensions.PlatformAbstractions.dll
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.0\Nancy.dll
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.0\Nancy.Serialization.JsonNet.dll
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.0\Newtonsoft.Json.dll

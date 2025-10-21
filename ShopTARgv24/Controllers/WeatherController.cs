@@ -8,52 +8,77 @@ using System.Threading.Tasks; // <-- ADDED this for async Task
 namespace ShopTARgv24.Controllers;
 
 public class WeatherController : Controller
-{
-    private readonly IWeatherForecastServices _weatherForecastServices;
-
-    public WeatherController
-    (
-        IWeatherForecastServices weatherForecastServices
-    )
     {
-        _weatherForecastServices = weatherForecastServices;
-    }
+        private readonly IWeatherForecastServices _weatherForecastServices;
 
-    // This action receives the POST from the search form
-    [HttpPost]
-    public IActionResult SearchCity(AccuWeatherSearchViewModel model) // <-- CHANGED to accept the view model
-    {
-        if (ModelState.IsValid)
+        public WeatherController
+            (
+                IWeatherForecastServices weatherForecastServices
+            )
         {
-            // Redirects to the "City" action with the city name from the form
-            return RedirectToAction("City", new { city = model.CityName });
+            _weatherForecastServices = weatherForecastServices;
         }
-        
-        // If model state is invalid, just return to the Index view
-        return RedirectToAction("Index");
-    }
 
-    public IActionResult Index()
-    {
-        return View();
-    }
-    
-    // This action now correctly waits for the weather data
-    public async Task<IActionResult> City(string city) // <-- CHANGED to async Task<IActionResult>
-    {
-        AccuLocationWeatherResultDto dto = new AccuLocationWeatherResultDto();
-        
-        dto.CityName = city;
+        public IActionResult Index()
+        {
+            return View();
+        }
 
-        // ADDED 'await' to wait for the service call to complete
-        await _weatherForecastServices.AccuWeatherResult(dto);
+        //teha action SearchCity
+        [HttpPost]
+        public IActionResult SearchCity(AccuWeatherSearchViewModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                return RedirectToAction("City", "Weather", new { city = model.CityName });
+            }
 
-        AccuWeatherViewModel vm = new();
-        
-        vm.TempMetricValueUnit = dto.TempMetricValueUnit;
-        vm.Text = dto.Text;
-        vm.EndDate = dto.EndDate;
-            
-        return View(vm);
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult City(string city)
+        {            
+            AccuLocationWeatherResultDto dto = new();
+            dto.CityName = city;
+
+            //_weatherForecastServices.AccuWeatherResult(dto);
+            _weatherForecastServices.AccuWeatherResultWebClient(dto);
+            AccuWeatherViewModel vm = new();
+            //vm.CityName = dto.CityName;
+            vm.EffectiveDate = dto.EffectiveDate;
+            vm.EffectiveEpochDate = dto.EffectiveEpochDate;
+            vm.Severity = dto.Severity;
+            vm.Text = dto.Text;
+            vm.Category = dto.Category;
+            vm.EndDate = dto.EndDate;
+            vm.EndEpochDate = dto.EndEpochDate;
+            vm.DailyForecastsDate = dto.DailyForecastsDate;
+            vm.DailyForecastsEpochDate = dto.DailyForecastsEpochDate;
+
+            vm.TempMinValue = dto.TempMinValue;
+            vm.TempMinUnit = dto.TempMinUnit;
+            vm.TempMinUnitType = dto.TempMinUnitType;
+
+            vm.TempMaxValue = dto.TempMaxValue;
+            vm.TempMaxUnit = dto.TempMaxUnit;
+            vm.TempMaxUnitType = dto.TempMaxUnitType;
+
+            vm.DayIcon = dto.DayIcon;
+            vm.DayIconPhrase = dto.DayIconPhrase;
+            vm.DayHasPrecipitation = dto.DayHasPrecipitation;
+            vm.DayPrecipitationType = dto.DayPrecipitationType;
+            vm.DayPrecipitationIntensity = dto.DayPrecipitationIntensity;
+
+            vm.NightIcon = dto.NightIcon;
+            vm.NightIconPhrase = dto.NightIconPhrase;
+            vm.NightHasPrecipitation = dto.NightHasPrecipitation;
+            vm.NightPrecipitationType = dto.NightPrecipitationType;
+            vm.NightPrecipitationIntensity = dto.NightPrecipitationIntensity;
+
+            vm.MobileLink = dto.MobileLink;
+            vm.Link = dto.Link;
+
+            return View(vm);
+        }
     }
-}
