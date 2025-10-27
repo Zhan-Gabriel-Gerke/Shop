@@ -31,11 +31,11 @@ public class ChucknorrisController : Controller
     }
 
     [HttpGet]
-    public IActionResult Joke()
+    public async Task<IActionResult> Joke()
     {
         ChuckNorrisResultDto dto = new();
 
-        _chucknorrisServices.ChuchNorrisResult(dto);
+        await _chucknorrisServices.ChuchNorrisResult(dto);
         ChucknorrisViewModel vm = new();
         
         vm.Categories = dto.Categories;
