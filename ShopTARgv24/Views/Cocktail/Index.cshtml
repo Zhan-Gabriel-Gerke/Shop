@@ -1,0 +1,23 @@
+﻿@model ShopTARgv24.Models.Cocktail.SearchCocktailViewModel
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4" style="font-family: Arial;">Find your favorite cocktail</h2>
+                    <form method="post" asp-action="searchCocktails" asp-controller="cocktail">
+                        <div class="mb-3">
+                            <label asp-for="SearchCocktail" class="form-label"></label>
+                            <input asp-for="SearchCocktail" class="form-control" placeholder="e.g. Margarita" />
+                            <span asp-validation-for="SearchCocktail" class="text-danger"></span>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-block">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+﻿@model ShopTARgv24.Models.Cocktail.CocktailViewModel
+
+<div class="container">
+    <h2>Discover new drinks</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            @if (!string.IsNullOrEmpty(Model.StrDrinkThumb))
+            {
+                <img src="@Model.StrDrinkThumb" alt="@Model.StrDrink" class="img-fluid rounded shadow" />
+            }
+        </div>
+        <div class="col-md-8">
+            <h3>@Model.StrDrink</h3>
+            <p>
+                <strong>Category:</strong> @Model.StrCategory <br />
+                <strong>Glass:</strong> @Model.StrGlass <br />
+                <strong>Type:</strong> @Model.StrAlcoholic <br />
+                @if (!string.IsNullOrEmpty(Model.StrIBA))
+                {
+                    <strong>IBA:</strong> @Model.StrIBA <br />
+                }
+                @if (!string.IsNullOrEmpty(Model.StrTags))
+                {
+                    <strong>Tags:</strong> @Model.StrTags <br />
+                }
+            </p>
+            <p>
+                <strong>Instructions:</strong><br />
+                @Model.StrInstructions
+            </p>
+            <h5>Ingredients:</h5>
+            <ul>
+                @for (int i = 1; i <= 15; i++)
+                {
+                    var ingredient = (string)Model.GetType().GetProperty($"StrIngredient{i}")?.GetValue(Model);
+                    var measure = (string)Model.GetType().GetProperty($"StrMeasure{i}")?.GetValue(Model);
+                    if (!string.IsNullOrWhiteSpace(ingredient))
+                    {
+                        <li>
+                            @ingredient @if (!string.IsNullOrWhiteSpace(measure)) { <text>- @measure</text> }
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="mt-4">
+        <a asp-controller="Cocktail" asp-action="Index" class="btn btn-secondary">Back to Search</a>
+    </div>
+</div>
