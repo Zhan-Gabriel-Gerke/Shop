@@ -1,0 +1,61 @@
+﻿@model ShopTARgv24.Models.OpenWeather.OpenWeatherViewModel
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-3">Forecast for the selected city</h2>
+                    <h4 class="text-center text-primary mb-4">@Model.Name</h4>
+                    <hr />
+                    <dl class="row">
+                        <dt class="col-sm-4">
+                            Temperature
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.Temp) °C
+                        </dd>
+
+                        <dt class="col-sm-4">
+                            Feels like
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.feels_like) °C
+                        </dd>
+
+                        <dt class="col-sm-4">
+                            Description
+                        </dt>
+                        <dd class="col-sm-8">
+                             @Html.DisplayFor(model => model.Description)
+                        </dd>
+
+                        <dt class="col-sm-4">
+                            Pressure
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.Pressure) hPa
+                        </dd>
+
+                        <dt class="col-sm-4">
+                            Humidity
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.Humidity) %
+                        </dd>
+
+                        <dt class="col-sm-4">
+                            Wind speed
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.Speed) m/s
+                        </dd>
+                    </dl>
+                    <div class="d-flex justify-content-end">
+                        <a asp-controller="openWeather" asp-action="Index" class="btn btn-success">Back to search</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

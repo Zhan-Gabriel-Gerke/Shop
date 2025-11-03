@@ -21,7 +21,7 @@ namespace ShopTARgv24
             builder.Services.AddScoped<IChucknorrisServices, ChucknorrisServices>();
             builder.Services.AddScoped<ICocktailServices, CocktailServices>();
             builder.Services.AddHttpClient<ICocktailServices, CocktailServices>();
-
+            builder.Services.AddScoped<IOpenWeatherServices, OpenWeatherServices>();
             builder.Services.AddDbContext<ShopTARgv24Context>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
