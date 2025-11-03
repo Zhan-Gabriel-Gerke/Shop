@@ -6,5 +6,7 @@
     <Import Project="$(NuGetPackageRoot)mono.texttemplating\3.0.0\buildTransitive\Mono.TextTemplating.targets" Condition="Exists('$(NuGetPackageRoot)mono.texttemplating\3.0.0\buildTransitive\Mono.TextTemplating.targets')" />
     <Import Project="$(NuGetPackageRoot)microsoft.extensions.logging.abstractions\9.0.8\buildTransitive\net8.0\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.logging.abstractions\9.0.8\buildTransitive\net8.0\Microsoft.Extensions.Logging.Abstractions.targets')" />
     <Import Project="$(NuGetPackageRoot)microsoft.codeanalysis.analyzers\3.3.4\buildTransitive\Microsoft.CodeAnalysis.Analyzers.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.codeanalysis.analyzers\3.3.4\buildTransitive\Microsoft.CodeAnalysis.Analyzers.targets')" />
+    <Import Project="$(NuGetPackageRoot)mstest.analyzers\4.0.1\buildTransitive\MSTest.Analyzers.targets" Condition="Exists('$(NuGetPackageRoot)mstest.analyzers\4.0.1\buildTransitive\MSTest.Analyzers.targets')" />
+    <Import Project="$(NuGetPackageRoot)mstest.testframework\4.0.1\buildTransitive\net9.0\MSTest.TestFramework.targets" Condition="Exists('$(NuGetPackageRoot)mstest.testframework\4.0.1\buildTransitive\net9.0\MSTest.TestFramework.targets')" />
   </ImportGroup>
 </Project>
