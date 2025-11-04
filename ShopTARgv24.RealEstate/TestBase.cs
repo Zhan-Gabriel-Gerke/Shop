@@ -25,9 +25,9 @@ public abstract class TestBase
 
     public virtual void SetupServices(IServiceCollection services)
     {
-        services.AddScoped<IRealEstateServices, IRealEstateServices>();
+        services.AddScoped<IRealEstateServices, RealEstateServices>();
         services.AddScoped<IFileServices, FileServices>();
-        //services.AddScoped<IHostEnvironment, MockHostEnviroment>();
+        services.AddScoped<IHostEnvironment, MockHostEnviroment>();
         
         services.AddDbContext<ShopTARgv24Context>(x =>
         {

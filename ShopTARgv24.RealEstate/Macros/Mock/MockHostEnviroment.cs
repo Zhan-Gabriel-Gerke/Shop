@@ -1,6 +1,12 @@
-﻿namespace ShopTARgv24.RealEstate.Macros.Mock;
+﻿using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Hosting;
 
-public class MockHostEnviroment
+namespace ShopTARgv24.RealEstate.Macros.Mock;
+
+public class MockHostEnviroment : IHostEnvironment
 {
-    
+    public string ApplicationName { get; set; }
+    public IFileProvider ContentRootFileProvider { get; set; }
+    public string ContentRootPath { get; set; }
+    public string EnvironmentName { get; set; }
 }
