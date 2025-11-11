@@ -130,7 +130,6 @@ namespace ShopTARgv24.RealEstate
             await Svc<IRealEstateServices>().Update(dto);
             //Assert
             Assert.Equal(guid, domain.Id);
-            //DoesNotMatch ja kasutage seda locationi ja RoomNumveri jaoks
             Assert.DoesNotMatch(dto.Location, domain.Location);
             Assert.DoesNotMatch(dto.RoomNumber.ToString(), domain.RoomNumber.ToString());
             Assert.NotEqual(dto.RoomNumber, domain.RoomNumber);
@@ -142,7 +141,7 @@ namespace ShopTARgv24.RealEstate
             //Arrange
             RealEstateDto updateDto = new()
             {
-                Id = Guid.NewGuid(), // Genereerime suvalise ID, mida andmebaasis pole
+                Id = Guid.NewGuid(),
                 Area = 100,
                 Location = "Nowhere",
                 RoomNumber = 1,
@@ -155,7 +154,7 @@ namespace ShopTARgv24.RealEstate
             var result = await Svc<IRealEstateServices>().Update(updateDto);
 
             //Assert
-            Assert.Null(result); // Eeldame, et olematu ID puhul ei tagastata midagi
+            Assert.Null(result);
         }
         [Fact]
         public async Task Should_UpdateRealEstate_WhenDataIsUpdated()
