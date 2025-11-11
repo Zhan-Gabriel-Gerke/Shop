@@ -66,21 +66,21 @@ public class RealEstateServices : IRealEstateServices
 
     public async Task<RealEstate> Update(RealEstateDto dto)
     {
-        RealEstate domain = new();
-
-        domain.Id = dto.Id;
-        domain.Area = dto.Area;
-        domain.Location = dto.Location;
-        domain.RoomNumber = dto.RoomNumber;
-        domain.BuildingType = dto.BuildingType;
-        domain.CreatedAt = dto.CreatedAt;
-        domain.ModifiedAt = DateTime.Now;
-        
-        _fileServices.UploadFilesToDatabase(dto, domain);
-        
-        context.RealEstates.Update(domain);
+        var existingRealEstate = await context.RealEstates.FindAsync(dto.Id);
+        if (existingRealEstate == null)
+        {
+            return null;
+        }
+        existingRealEstate.Area = dto.Area;
+        existingRealEstate.Location = dto.Location;
+        existingRealEstate.RoomNumber = dto.RoomNumber;
+        existingRealEstate.BuildingType = dto.BuildingType;
+        existingRealEstate.ModifiedAt = DateTime.Now;
+        if (dto.Files != null)
+        {
+            _fileServices.UploadFilesToDatabase(dto, existingRealEstate);
+        }
         await context.SaveChangesAsync();
-        
-        return domain;
+        return existingRealEstate;
     }
 }
