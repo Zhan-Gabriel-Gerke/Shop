@@ -4,6 +4,9 @@
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003ARealEstateTest_002Ecs_002Fl_003AShopTARgv24_002ERealEstate_003FRealEstateTest_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003ATestBase_002Ecs_002Fl_003AShopTARgv24_002ERealEstate_003FTestBase_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b3df5302_002D0527_002D44c6_002D9fa8_002D2099b5fbc045/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from &amp;lt;ShopTARgv24.RealEstate&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;Project Location="C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24.RealEstate" Presentation="&amp;lt;ShopTARgv24.RealEstate&amp;gt;" /&gt;&#xD;
+  &lt;Or&gt;&#xD;
+    &lt;Project Location="C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24.RealEstate" Presentation="&amp;lt;ShopTARgv24.RealEstate&amp;gt;" /&gt;&#xD;
+    &lt;Project Location="C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24.Spaceships" Presentation="&amp;lt;ShopTARgv24.Spaceships&amp;gt;" /&gt;&#xD;
+  &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	</wpf:ResourceDictionary>

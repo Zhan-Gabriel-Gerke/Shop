@@ -1,0 +1,583 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Spaceships\\ShopTARgv24.Spaceships.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.ApplicationServices\\ShopTARgv24.ApplicationServices.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.ApplicationServices\\ShopTARgv24.ApplicationServices.csproj",
+        "projectName": "ShopTARgv24.ApplicationServices",
+        "projectPath": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.ApplicationServices\\ShopTARgv24.ApplicationServices.csproj",
+        "packagesPath": "C:\\Users\\zange\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.ApplicationServices\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\zange\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Data\\ShopTARgv24.Data.csproj": {
+                "projectPath": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Data\\ShopTARgv24.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.Extensions.Hosting.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "Nancy.Serialization.JsonNet": {
+              "target": "Package",
+              "version": "[2.0.0-clinteastwood, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Core\\ShopTARgv24.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Core\\ShopTARgv24.Core.csproj",
+        "projectName": "ShopTARgv24.Core",
+        "projectPath": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Core\\ShopTARgv24.Core.csproj",
+        "packagesPath": "C:\\Users\\zange\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\zange\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
+            "Nancy.Serialization.JsonNet": {
+              "target": "Package",
+              "version": "[2.0.0-clinteastwood, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Data\\ShopTARgv24.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Data\\ShopTARgv24.Data.csproj",
+        "projectName": "ShopTARgv24.Data",
+        "projectPath": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Data\\ShopTARgv24.Data.csproj",
+        "packagesPath": "C:\\Users\\zange\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\zange\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Core\\ShopTARgv24.Core.csproj": {
+                "projectPath": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Core\\ShopTARgv24.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "Nancy.Serialization.JsonNet": {
+              "target": "Package",
+              "version": "[2.0.0-clinteastwood, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.RealEstate\\ShopTARgv24.RealEstate.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.RealEstate\\ShopTARgv24.RealEstate.csproj",
+        "projectName": "ShopTARgv24.RealEstate",
+        "projectPath": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.RealEstate\\ShopTARgv24.RealEstate.csproj",
+        "packagesPath": "C:\\Users\\zange\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.RealEstate\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\zange\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.ApplicationServices\\ShopTARgv24.ApplicationServices.csproj": {
+                "projectPath": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.ApplicationServices\\ShopTARgv24.ApplicationServices.csproj"
+              },
+              "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Core\\ShopTARgv24.Core.csproj": {
+                "projectPath": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Core\\ShopTARgv24.Core.csproj"
+              },
+              "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Data\\ShopTARgv24.Data.csproj": {
+                "projectPath": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Data\\ShopTARgv24.Data.csproj"
+              },
+              "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.csproj": {
+                "projectPath": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[9.0.10, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.1.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.8.1, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.8.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Spaceships\\ShopTARgv24.Spaceships.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Spaceships\\ShopTARgv24.Spaceships.csproj",
+        "projectName": "ShopTARgv24.Spaceships",
+        "projectPath": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Spaceships\\ShopTARgv24.Spaceships.csproj",
+        "packagesPath": "C:\\Users\\zange\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Spaceships\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\zange\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.ApplicationServices\\ShopTARgv24.ApplicationServices.csproj": {
+                "projectPath": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.ApplicationServices\\ShopTARgv24.ApplicationServices.csproj"
+              },
+              "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Core\\ShopTARgv24.Core.csproj": {
+                "projectPath": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Core\\ShopTARgv24.Core.csproj"
+              },
+              "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Data\\ShopTARgv24.Data.csproj": {
+                "projectPath": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Data\\ShopTARgv24.Data.csproj"
+              },
+              "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.RealEstate\\ShopTARgv24.RealEstate.csproj": {
+                "projectPath": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.RealEstate\\ShopTARgv24.RealEstate.csproj"
+              },
+              "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.csproj": {
+                "projectPath": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.11, )"
+            },
+            "Microsoft.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.12.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.9.2, )"
+            },
+            "xunit.runner.visualstudio": {
+              "target": "Package",
+              "version": "[2.8.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.csproj",
+        "projectName": "ShopTARgv24",
+        "projectPath": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.csproj",
+        "packagesPath": "C:\\Users\\zange\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\zange\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.ApplicationServices\\ShopTARgv24.ApplicationServices.csproj": {
+                "projectPath": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.ApplicationServices\\ShopTARgv24.ApplicationServices.csproj"
+              },
+              "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Data\\ShopTARgv24.Data.csproj": {
+                "projectPath": "C:\\Users\\zange\\RiderProjects\\ShopTARgv24\\ShopTARgv24\\ShopTARgv24.Data\\ShopTARgv24.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "MSTest.TestFramework": {
+              "target": "Package",
+              "version": "[4.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "Nancy.Serialization.JsonNet": {
+              "target": "Package",
+              "version": "[2.0.0-clinteastwood, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
