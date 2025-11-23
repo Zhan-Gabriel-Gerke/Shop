@@ -108,7 +108,7 @@ public class RealEstateController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> DeleteConfirmation(Guid? id)
+    public async Task<IActionResult> DeleteConfirmation(Guid id)
     {
         var realEstate = await _realEstateServices.Delete(id);
 

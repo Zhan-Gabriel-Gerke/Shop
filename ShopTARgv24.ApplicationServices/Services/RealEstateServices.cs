@@ -49,19 +49,39 @@ public class RealEstateServices : IRealEstateServices
         return realEstate;
     }
 
-    public async Task<RealEstate> Delete(Guid? id)
+    // public async Task<RealEstate> Delete(Guid? id)
+    // {
+    //     var realEstate = await context.RealEstates
+    //         .FirstOrDefaultAsync(x => x.Id == id);
+    //     if (realEstate == null)
+    //     {
+    //         return null;
+    //     }
+    //     
+    //     context.RealEstates.Remove(realEstate);
+    //     await context.SaveChangesAsync();
+    //     
+    //     return realEstate;
+    // }
+
+    public async Task<RealEstate> Delete(Guid id)
     {
-        var realEstate = await context.RealEstates
+        var result = await context.RealEstates
             .FirstOrDefaultAsync(x => x.Id == id);
-        if (realEstate == null)
-        {
-            return null;
-        }
-        
-        context.RealEstates.Remove(realEstate);
+
+        var images = await context.FileToDatabases
+            .Where(x => x.RealEstateId == result.Id)
+            .Select(x => new FileToDatabaseDto
+            {
+                Id = x.Id,
+                ImageTitle = x.ImageTitle,
+                RealEstateId = x.RealEstateId
+            }).ToArrayAsync();
+
+        await _fileServices.RemoveImageFromDatabase(images);
+        context.RealEstates.Remove(result);
         await context.SaveChangesAsync();
-        
-        return realEstate;
+        return result;
     }
 
     public async Task<RealEstate> Update(RealEstateDto dto)
@@ -83,4 +103,6 @@ public class RealEstateServices : IRealEstateServices
         await context.SaveChangesAsync();
         return existingRealEstate;
     }
+    
+    
 }

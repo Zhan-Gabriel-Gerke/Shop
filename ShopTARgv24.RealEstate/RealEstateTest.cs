@@ -79,7 +79,7 @@ namespace ShopTARgv24.RealEstate
 
         [Fact]
         public async Task Should_DeleteByIdRealEstate_WhenDeleteRealEstate()
-        {
+        { 
             //Arrange
             RealEstateDto dto = MockRealEstateData();
             
@@ -254,6 +254,7 @@ namespace ShopTARgv24.RealEstate
             Assert.NotNull(updated);
             Assert.NotEqual(oldModified, updated.ModifiedAt); // время должно измениться
         }
+        
         [Fact]
         
         public async Task Should_ThrowException_When_DeletingNonExistentRealEstate()
