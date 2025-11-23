@@ -7,8 +7,8 @@ using Microsoft.Extensions.Hosting;
 using ShopTARgv24.ApplicationServices.Services;
 using ShopTARgv24.Core.ServiceInterface;
 using ShopTARgv24.Data;
-using ShopTARgv24.Spaceships.Macros; // Убедитесь, что namespace в макросах изменен
-using ShopTARgv24.Spaceships.Macros.Mock; // Убедитесь, что namespace в моках изменен
+using ShopTARgv24.Spaceships.Macros;
+using ShopTARgv24.Spaceships.Macros.Mock;
 
 namespace ShopTARgv24.Spaceships;
 
