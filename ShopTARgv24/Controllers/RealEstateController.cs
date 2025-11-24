@@ -4,6 +4,7 @@ using ShopTARgv24.Core.ServiceInterface;
 using ShopTARgv24.Data;
 using ShopTARgv24.Models.RealEstate;
 using Microsoft.EntityFrameworkCore;
+using ShopTARgv24.ApplicationServices.Services;
 using ShopTARgv24.Core.Dto;
 
 namespace ShopTARgv24.Controllers;
@@ -12,17 +13,20 @@ public class RealEstateController : Controller
 {
     private readonly ShopTARgv24Context _context;
     private readonly IRealEstateServices _realEstateServices;
+    private readonly FileServices _fileServices;
     
 
     public RealEstateController
     (
         ShopTARgv24Context context,
-        IRealEstateServices realEstateServices
+        IRealEstateServices realEstateServices,
+        FileServices fileServices
         
     )
     {
         _context = context;
         _realEstateServices = realEstateServices;
+        _fileServices = fileServices;
         
     }
     [HttpGet]
@@ -52,6 +56,11 @@ public class RealEstateController : Controller
 
     public async Task<IActionResult> Create(RealEstateCreateUpdateViewModel vm)
     {
+        if (!ModelState.IsValid)
+        {
+            return View("CreateUpdate", vm);
+        }
+        
         var dto = new RealEstateDto()
         {
             Id = vm.Id,
@@ -90,7 +99,7 @@ public class RealEstateController : Controller
 
         if (realEstate == null)
         {
-            return NotFound();
+            return View("NotFound", id);
         }
 
         ImageViewModel[] photos = await ShowImage(id);
@@ -127,7 +136,7 @@ public class RealEstateController : Controller
 
         if (realEstate == null)
         {
-            return NotFound();
+            return View("NotFound", id);
         }
 
         ImageViewModel[] photos = await ShowImage(id);
@@ -150,6 +159,10 @@ public class RealEstateController : Controller
 
     public async Task<IActionResult> Update(RealEstateCreateUpdateViewModel vm)
     {
+        if (!ModelState.IsValid)
+        {
+            return View("CreateUpdate", vm);
+        }
         var dto = new RealEstateDto()
         {
             Id = vm.Id,
@@ -217,7 +230,24 @@ public class RealEstateController : Controller
                 ImageData = y.ImageData,
                 ImageTitle = y.ImageTitle,
                 Images = string.Format("data:image/gif;base64, {0}", Convert.ToBase64String(y.ImageData))
-            }).ToArrayAsync();
+            }).ToArrayAsync(); 
         return images;
+    }
+    [HttpPost]
+    private async Task<IActionResult> RemoveImage(ImageViewModel vm)
+    {
+        var dto = new FileToDatabaseDto()
+        {
+            Id = vm.Id
+        };
+
+        var image = await _fileServices.RemoveImageFromDatabase(dto);
+
+        if (image == null)
+        {
+            return RedirectToAction(nameof(Index));
+        }
+
+        return RedirectToAction(nameof(Index));
     }
 }

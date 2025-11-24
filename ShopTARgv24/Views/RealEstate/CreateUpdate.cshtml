@@ -22,6 +22,7 @@ else
             <label asp-for="Area" class="col-sm-2 col-form-label"></label>
             <div class="col-sm-10">
                 <input asp-for="Area" class="form-control" />
+                <span asp-validation-for="Area" class="text-danger"></span>
             </div>
         </div>
 
@@ -36,6 +37,7 @@ else
             <label asp-for="RoomNumber" class="col-sm-2 col-form-label"></label>
             <div class="col-sm-10">
                 <input asp-for="RoomNumber" class="form-control" />
+                <span asp-validation-for="RoomNumber" class="text-danger"></span>
             </div>
         </div>
 
@@ -57,8 +59,9 @@ else
         
         <div>
             @foreach (var images in Model.Images)
-            {
+            {   
                 <partial name="_Images" model="images"/>
+                <input asp-action="removeImage" asp-controller="realEstate" asp-route-id="@images.Id" type="submit" class="btn btn-danger" value="Remove Image"/>
             }
         </div>
         
