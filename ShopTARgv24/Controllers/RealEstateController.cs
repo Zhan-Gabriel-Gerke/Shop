@@ -13,14 +13,14 @@ public class RealEstateController : Controller
 {
     private readonly ShopTARgv24Context _context;
     private readonly IRealEstateServices _realEstateServices;
-    private readonly FileServices _fileServices;
+    private readonly IFileServices _fileServices;
     
 
     public RealEstateController
     (
         ShopTARgv24Context context,
         IRealEstateServices realEstateServices,
-        FileServices fileServices
+        IFileServices fileServices
         
     )
     {
@@ -234,14 +234,14 @@ public class RealEstateController : Controller
         return images;
     }
     [HttpPost]
-    private async Task<IActionResult> RemoveImage(ImageViewModel vm)
+    public async Task<IActionResult> RemoveImage(ImageViewModel vm)
     {
         var dto = new FileToDatabaseDto()
         {
             Id = vm.Id
         };
-
-        var image = await _fileServices.RemoveImageFromDatabase(dto);
+        
+        var image = await _fileServices.RemoveImageFromDatabase(new FileToDatabaseDto[] { dto });
 
         if (image == null)
         {
