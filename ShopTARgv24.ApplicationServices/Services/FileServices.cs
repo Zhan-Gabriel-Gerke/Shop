@@ -129,8 +129,12 @@ namespace ShopTARgv24.ApplicationServices.Services
             {
                 var imageId = await _context.FileToDatabases
                     .FirstOrDefaultAsync(x => x.Id == dto.Id);
-                _context.FileToDatabases.Remove(imageId);
-                await _context.SaveChangesAsync();
+                
+                if (imageId != null)
+                {
+                    _context.FileToDatabases.Remove(imageId);
+                    await _context.SaveChangesAsync();
+                }
             }
             return null;
         }

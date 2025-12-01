@@ -256,3 +256,6 @@ C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.
 C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.0\zh-Hant\MSTest.TestFramework.resources.dll
 C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.0\MSTest.TestFramework.Extensions.dll
 C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.0\MSTest.TestFramework.Extensions.xml
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.0\BouncyCastle.Cryptography.dll
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.0\MailKit.dll
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.0\MimeKit.dll

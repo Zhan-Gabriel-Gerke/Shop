@@ -38,12 +38,14 @@ public class RealEstateServices : IRealEstateServices
         realEstate.CreatedAt = DateTime.Now;
         realEstate.ModifiedAt = DateTime.Now;
 
+        await context.RealEstates.AddAsync(realEstate);
+        
         if (dto.Files != null)
         {
             _fileServices.UploadFilesToDatabase(dto, realEstate);
         }
         
-        await context.RealEstates.AddAsync(realEstate);
+        
         await context.SaveChangesAsync();
         
         return realEstate;
@@ -96,10 +98,12 @@ public class RealEstateServices : IRealEstateServices
         existingRealEstate.RoomNumber = dto.RoomNumber;
         existingRealEstate.BuildingType = dto.BuildingType;
         existingRealEstate.ModifiedAt = DateTime.Now;
+        
         if (dto.Files != null)
         {
             _fileServices.UploadFilesToDatabase(dto, existingRealEstate);
         }
+        
         await context.SaveChangesAsync();
         return existingRealEstate;
     }

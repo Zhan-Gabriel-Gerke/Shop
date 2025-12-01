@@ -1,6 +1,5 @@
 ﻿@model ShopTARgv24.Models.RealEstate.RealEstateCreateUpdateViewModel
 
-
 @if (Model.Id.HasValue)
 {
     <h1>Update</h1>
@@ -9,8 +8,6 @@ else
 {
     <h1>Create</h1>
 }
-
-
 
 <div>
     <form method="post" enctype="multipart/form-data">
@@ -61,7 +58,8 @@ else
             @foreach (var images in Model.Images)
             {   
                 <partial name="_Images" model="images"/>
-                <input asp-action="removeImage" asp-controller="realEstate" asp-route-id="@images.Id" type="submit" class="btn btn-danger" value="Remove Image"/>
+                @* CORRECTED LINE BELOW: Changed asp-route-id to asp-route-imageId *@
+                <input asp-action="removeImage" asp-controller="realEstate" asp-route-imageId="@images.Id" type="submit" class="btn btn-danger" value="Remove Image"/>
             }
         </div>
         

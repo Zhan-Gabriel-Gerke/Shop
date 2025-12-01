@@ -88,7 +88,7 @@ public class RealEstateController : Controller
             return RedirectToAction(nameof(Index));
         }
         
-        return RedirectToAction(nameof(Index));
+        return RedirectToAction(nameof(Update), new { Id = result.Id });
     }
 
     [HttpGet]
@@ -151,7 +151,6 @@ public class RealEstateController : Controller
         vm.ModifiedAt = realEstate.ModifiedAt;
         vm.Images.AddRange(photos);
         
-        
         return View("CreateUpdate" ,vm);
     }
 
@@ -184,7 +183,9 @@ public class RealEstateController : Controller
         };
         
         var result = await _realEstateServices.Update(dto);
-
+        
+        //var realEstate 
+        
         if (result == null)
         {
             return RedirectToAction(nameof(Index));
@@ -234,20 +235,15 @@ public class RealEstateController : Controller
         return images;
     }
     [HttpPost]
-    public async Task<IActionResult> RemoveImage(ImageViewModel vm)
+    public async Task<IActionResult> RemoveImage(Guid imageId, RealEstateCreateUpdateViewModel vm)
     {
         var dto = new FileToDatabaseDto()
         {
-            Id = vm.Id
+            Id = imageId
         };
         
-        var image = await _fileServices.RemoveImageFromDatabase(new FileToDatabaseDto[] { dto });
+        await _fileServices.RemoveImageFromDatabase(new FileToDatabaseDto[] { dto });
 
-        if (image == null)
-        {
-            return RedirectToAction(nameof(Index));
-        }
-
-        return RedirectToAction(nameof(Index));
+        return RedirectToAction(nameof(Update), new { id = vm.Id });
     }
 }
