@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using ShopTARgv24.ApplicationServices.Services;
 using ShopTARgv24.Core.ServiceInterface;
 using ShopTARgv24.Data;
+using ShopTARgv24.Hubs;
 
 namespace ShopTARgv24
 {
@@ -22,6 +23,7 @@ namespace ShopTARgv24
             builder.Services.AddScoped<ICocktailServices, CocktailServices>();
             builder.Services.AddScoped<IEmailService, EmailServices>();
             builder.Services.AddHttpClient<ICocktailServices, CocktailServices>();
+            builder.Services.AddSignalR();
 
             builder.Services.AddDbContext<ShopTARgv24Context>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -48,7 +50,7 @@ namespace ShopTARgv24
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}")
                 .WithStaticAssets();
-
+            app.MapHub<ChatHub>("/chatHub");
             app.Run();
         }
     }
