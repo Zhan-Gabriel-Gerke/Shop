@@ -4,4 +4,5 @@ namespace ShopTARgv24.Core.ServiceInterface;
 public interface IEmailService
 {
     void SendEmail(EmailDto dto);
+    void SendEmailToken(EmailTokenDto dto, string token);
 }

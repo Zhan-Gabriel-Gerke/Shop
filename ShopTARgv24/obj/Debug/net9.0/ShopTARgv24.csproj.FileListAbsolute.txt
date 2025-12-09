@@ -262,3 +262,10 @@ C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.
 C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\obj\Debug\net9.0\compressed\417546n8tm-d9yzjw8bta.gz
 C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.0\libman.json
 C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\obj\Debug\net9.0\compressed\mfnu8zuics-3myjnzk89a.gz
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.0\System.Formats.Asn1.dll
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.0\System.Text.Json.dll

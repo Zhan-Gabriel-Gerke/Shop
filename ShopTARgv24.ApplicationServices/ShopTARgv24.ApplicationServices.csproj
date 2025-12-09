@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="MailKit" Version="4.14.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.11" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.8" />
     <PackageReference Include="MimeKit" Version="4.14.0" />
     <PackageReference Include="Nancy.Serialization.JsonNet" Version="2.0.0-clinteastwood" />

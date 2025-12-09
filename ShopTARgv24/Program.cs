@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ShopTARgv24.ApplicationServices.Services;
+using ShopTARgv24.Core.Domain;
 using ShopTARgv24.Core.ServiceInterface;
 using ShopTARgv24.Data;
 using ShopTARgv24.Hubs;
@@ -27,6 +29,10 @@ namespace ShopTARgv24
 
             builder.Services.AddDbContext<ShopTARgv24Context>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ShopTARgv24Context>()
+                .AddDefaultTokenProviders();
 
             var app = builder.Build();
 
