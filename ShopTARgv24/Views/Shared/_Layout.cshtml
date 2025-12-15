@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ShopTARgv24.Core.Domain.ApplicationUser> SignInManager
+@inject UserManager<ShopTARgv24.Core.Domain.ApplicationUser> userManager
+@{
+    var user = await userManager.GetUserAsync(User);
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -26,6 +32,8 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Spaceships" asp-action="Index">Spaceship</a>
                         </li>
@@ -47,9 +55,41 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Home" asp-action="Chat">Chat</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Accounts" asp-action="Register">Reg</a>
-                        </li>
+                        }
+                    </ul>
+                    <ul class="navbar-nav">
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item dropdown">
+                                <div class="dropdown">
+                                    <button class="btn btn-info-dropdown dropdown-toggle" type="button" data-bs-toggle="dropdown" id="dropDownMenu">
+                                        Manage Account
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                                        <li>
+                                            <a class="dropdown-item" asp-controller="Accounts" asp-action="ChangePassword">Change Password</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </li>
+                            <li class="nav-item">
+                                <form method="post" asp-action="logout" asp-controller="accounts">
+                                    <button type="submit" class="nav-link btn btn-link text-dark">
+                                        Logout  @User.Identity.Name
+                                    </button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Accounts" asp-action="Register">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Accounts" asp-action="Login">Log in</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

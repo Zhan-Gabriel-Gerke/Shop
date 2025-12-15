@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ShopTARgv24.ApplicationServices.Services;
@@ -16,7 +17,6 @@ namespace ShopTARgv24
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
             builder.Services.AddScoped<ISpaceshipsServices, SpaceshipsServices>();
             builder.Services.AddScoped<IFileServices, FileServices>();
             builder.Services.AddScoped<IRealEstateServices, RealEstateServices>();
@@ -33,7 +33,9 @@ namespace ShopTARgv24
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ShopTARgv24Context>()
                 .AddDefaultTokenProviders();
-
+            
+            
+            
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -48,9 +50,11 @@ namespace ShopTARgv24
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseAuthentication();
             app.UseStaticFiles();
 
+            app.MapControllers().RequireAuthorization();
+            
             app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",

@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
 using ShopTARgv24.Core.Domain;
 using ShopTARgv24.Core.Dto;
 using ShopTARgv24.Core.ServiceInterface;
@@ -27,7 +29,7 @@ public class AccountsController : Controller
             _signInManager = signInManager;
             _emailServices = emailServices;
         }
-
+        [AllowAnonymous]
         public IActionResult Register()
         {
             return View();
@@ -139,5 +141,99 @@ public class AccountsController : Controller
         public async Task<IActionResult> Login()
         {
             return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> Login(LogInViewModel model, string? returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+
+                if (user != null && !user.EmailConfirmed &&
+                    (await _userManager.CheckPasswordAsync(user, model.Password)))
+                {
+                    ModelState.AddModelError(string.Empty, "Email not confirmed yet");
+                    return View(model);
+                }
+
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, true);
+
+                if (result.Succeeded)
+                {
+                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+
+                if (result.IsLockedOut)
+                {
+                    return View("AccountLocked");
+                }
+                
+                ModelState.AddModelError("", "Invalid Login Attempt");
+            }
+
+            return View(model);
+        }
+        
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> LogOut()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> LogOut(LogInViewModel model, string? returnUrl)
+        {
+            await _signInManager.SignOutAsync();
+
+            return RedirectToAction("Index", "Home");
+        }
+        
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(User);
+
+                if (user == null)
+                {
+                    return RedirectToAction("Login");
+                }
+
+                var result = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+
+                if (!result.Succeeded)
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+
+                    return View();
+                }
+                
+                await _signInManager.RefreshSignInAsync(user);
+                return View("ChangePasswordConfirmation");
+            }
+            return View(model);
         }
     }

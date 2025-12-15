@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ShopTARgv24.Core.Domain;
 using ShopTARgv24.Core.ServiceInterface;
 using ShopTARgv24.Data;
@@ -29,6 +30,7 @@ public class RealEstateController : Controller
         _fileServices = fileServices;
         
     }
+    //[Authorize(Roles = "Admin")] //Only admins can get access 
     [HttpGet]
     public IActionResult Index()
     {
