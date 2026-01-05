@@ -1,4 +1,6 @@
 ﻿@model ShopTARgv24.Models.Accounts.LogInViewModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ShopTARgv24.Core.Domain.ApplicationUser> SignInManager
 
 @{
     ViewBag.Title = "Log In";
@@ -7,7 +9,7 @@
 <h1>Log In</h1>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <form method="post">
             <div class="form-group">
                 <label asp-for="Email"></label>
@@ -34,10 +36,41 @@
                 </button>
             </div>
             <div class="form-group">
-            <a asp-controller="Users" asp-action="Edit" asp-route-id="">
-                Forgot password?
-            </a>
+                <a asp-action="ForgotPassword">Forgot passsword?</a>
             </div>
         </form>
+    </div>
+    
+    <div class="col-md-6">
+        <h1>External Login</h1>
+        <hr />
+        @{
+            var schemes = await SignInManager.GetExternalAuthenticationSchemesAsync();
+            var loginProviders = schemes.ToList();
+            if (loginProviders.Count == 0)
+            {
+                <div>
+                    <p>
+                        No external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                        for details on setting up this ASP.NET application to support logging in via external services.
+                    </p>
+                </div>
+            }
+            else
+            {
+                <form method="post" asp-action="ExternalLogin" asp-route-returnUrl="@ViewData["ReturnUrl"]">
+                    <div>
+                        @foreach (var provider in loginProviders)
+                        {
+                            <button type="submit" class="btn btn-primary" 
+                                    name="provider" value="@provider.Name" 
+                                    title="Log in using your @provider.DisplayName account">
+                                @provider.DisplayName
+                            </button>
+                        }
+                    </div>
+                </form>
+            }
+        }
     </div>
 </div>

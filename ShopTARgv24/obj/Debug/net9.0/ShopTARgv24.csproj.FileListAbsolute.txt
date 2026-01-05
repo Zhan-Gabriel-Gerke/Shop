@@ -269,3 +269,4 @@ C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.
 C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.0\System.Formats.Asn1.dll
 C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.0\System.Text.Json.dll
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.Google.dll
