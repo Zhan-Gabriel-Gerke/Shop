@@ -9,6 +9,7 @@
       "ShopTARgv24/1.0.0": {
         "dependencies": {
           "MSTest.TestFramework": "4.0.1",
+          "Microsoft.AspNetCore.Authentication.Facebook": "9.0.11",
           "Microsoft.AspNetCore.Authentication.Google": "9.0.10",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "9.0.11",
           "Microsoft.EntityFrameworkCore.Design": "9.0.11",
@@ -114,6 +115,14 @@
           "Microsoft.AspNetCore.Authentication.Abstractions": "2.3.0",
           "Microsoft.AspNetCore.Http": "2.3.0",
           "Microsoft.AspNetCore.Http.Extensions": "2.3.0"
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.Facebook/9.0.11": {
+        "runtime": {
+          "lib/net9.0/Microsoft.AspNetCore.Authentication.Facebook.dll": {
+            "assemblyVersion": "9.0.11.0",
+            "fileVersion": "9.0.1125.52006"
+          }
         }
       },
       "Microsoft.AspNetCore.Authentication.Google/9.0.10": {
@@ -2105,6 +2114,13 @@
       "sha512": "sha512-gnLnKGawBjqBnU9fEuel3VcYAARkjyONAliaGDfMc8o8HBtfh+HrOPEoR8Xx4b2RnMb7uxdBDOvEAC7sul79ig==",
       "path": "microsoft.aspnetcore.authentication.core/2.3.0",
       "hashPath": "microsoft.aspnetcore.authentication.core.2.3.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.Facebook/9.0.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PtUktBvZJq7KOP1HJL/tKEgHDVvctS2gwqgqWdhibpYzUoQk0gSn73zXRwra9PJVTaIG9gzYhPuYGWxBGA3/2Q==",
+      "path": "microsoft.aspnetcore.authentication.facebook/9.0.11",
+      "hashPath": "microsoft.aspnetcore.authentication.facebook.9.0.11.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication.Google/9.0.10": {
       "type": "package",

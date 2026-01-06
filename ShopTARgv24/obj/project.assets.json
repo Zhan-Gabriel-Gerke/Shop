@@ -164,6 +164,22 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Authentication.Facebook/9.0.11": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/Microsoft.AspNetCore.Authentication.Facebook.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.AspNetCore.Authentication.Facebook.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Microsoft.AspNetCore.Authentication.Google/9.0.10": {
         "type": "package",
         "compile": {
@@ -3629,6 +3645,21 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.Core.xml",
         "microsoft.aspnetcore.authentication.core.2.3.0.nupkg.sha512",
         "microsoft.aspnetcore.authentication.core.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Authentication.Facebook/9.0.11": {
+      "sha512": "PtUktBvZJq7KOP1HJL/tKEgHDVvctS2gwqgqWdhibpYzUoQk0gSn73zXRwra9PJVTaIG9gzYhPuYGWxBGA3/2Q==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.authentication.facebook/9.0.11",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net9.0/Microsoft.AspNetCore.Authentication.Facebook.dll",
+        "lib/net9.0/Microsoft.AspNetCore.Authentication.Facebook.xml",
+        "microsoft.aspnetcore.authentication.facebook.9.0.11.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.facebook.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Authentication.Google/9.0.10": {
@@ -10507,6 +10538,7 @@
   "projectFileDependencyGroups": {
     "net9.0": [
       "MSTest.TestFramework >= 4.0.1",
+      "Microsoft.AspNetCore.Authentication.Facebook >= 9.0.11",
       "Microsoft.AspNetCore.Authentication.Google >= 9.0.10",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 9.0.11",
       "Microsoft.EntityFrameworkCore.Design >= 9.0.11",
@@ -10578,6 +10610,10 @@
           "MSTest.TestFramework": {
             "target": "Package",
             "version": "[4.0.1, )"
+          },
+          "Microsoft.AspNetCore.Authentication.Facebook": {
+            "target": "Package",
+            "version": "[9.0.11, )"
           },
           "Microsoft.AspNetCore.Authentication.Google": {
             "target": "Package",
