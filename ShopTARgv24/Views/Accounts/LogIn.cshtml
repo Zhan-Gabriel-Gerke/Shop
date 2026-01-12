@@ -6,71 +6,72 @@
     ViewBag.Title = "Log In";
 }
 
-<h1>Log In</h1>
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="col-md-5">
+            <div class="card auth-card">
+                <div class="card-body p-5">
+                    <h2 class="text-center mb-4">Welcome Back</h2>
+                    <p class="text-center text-muted mb-4">Please enter your details to sign in.</p>
+                    
+                    <form method="post">
+                        <div class="form-group mb-3">
+                            <label asp-for="Email" class="form-label fw-bold small text-uppercase text-muted">Email</label>
+                            <input asp-for="Email" class="form-control" placeholder="name@example.com" />
+                            <span asp-validation-for="Email" class="text-danger small"></span>
+                        </div>
 
-<div class="row">
-    <div class="col-md-6">
-        <form method="post">
-            <div class="form-group">
-                <label asp-for="Email"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
+                        <div class="form-group mb-3">
+                            <label asp-for="Password" class="form-label fw-bold small text-uppercase text-muted">Password</label>
+                            <input asp-for="Password" class="form-control" placeholder="Enter your password" />
+                            <span asp-validation-for="Password" class="text-danger small"></span>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" asp-for="RememberMe"/>
+                                <label class="form-check-label small" asp-for="RememberMe">Remember me</label>
+                            </div>
+                            <a asp-action="ForgotPassword" class="small text-primary fw-bold">Forgot password?</a>
+                        </div>
 
-            <div class="form-group">
-                <label asp-for="Password"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <input class="form-check-input" asp-for="RememberMe"/>
-                        <label class="form-check-label" asp-for="RememberMe">
-                            Remember me
-                        </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">
-                    Log In
-                </button>
-            </div>
-            <div class="form-group">
-                <a asp-action="ForgotPassword">Forgot passsword?</a>
-            </div>
-        </form>
-    </div>
-    
-    <div class="col-md-6">
-        <h1>External Login</h1>
-        <hr />
-        @{
-            var schemes = await SignInManager.GetExternalAuthenticationSchemesAsync();
-            var loginProviders = schemes.ToList();
-            if (loginProviders.Count == 0)
-            {
-                <div>
-                    <p>
-                        No external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                        for details on setting up this ASP.NET application to support logging in via external services.
-                    </p>
-                </div>
-            }
-            else
-            {
-                <form method="post" asp-action="ExternalLogin" asp-route-returnUrl="@ViewData["ReturnUrl"]">
-                    <div>
-                        @foreach (var provider in loginProviders)
-                        {
-                            <button type="submit" class="btn btn-primary" 
-                                    name="provider" value="@provider.Name" 
-                                    title="Log in using your @provider.DisplayName account">
-                                @provider.DisplayName
-                            </button>
-                        }
+                        <div class="d-grid gap-2 mb-4">
+                            <button type="submit" class="btn btn-primary btn-lg">Log In</button>
+                        </div>
+                    </form>
+
+                    <div class="text-center mb-4">
+                        <span class="text-muted small">Or continue with</span>
                     </div>
-                </form>
-            }
-        }
+
+                    @{
+                        var schemes = await SignInManager.GetExternalAuthenticationSchemesAsync();
+                        var loginProviders = schemes.ToList();
+                        if (loginProviders.Count > 0)
+                        {
+                            <form method="post" asp-action="ExternalLogin" asp-route-returnUrl="@ViewData["ReturnUrl"]">
+                                <div class="d-grid gap-2">
+                                    @foreach (var provider in loginProviders)
+                                    {
+                                        <button type="submit" class="btn btn-outline-secondary social-btn" 
+                                                name="provider" value="@provider.Name" 
+                                                title="Log in using your @provider.DisplayName account">
+                                            @if (provider.Name == "Google") { <i class="fab fa-google text-danger"></i> }
+                                            else if (provider.Name == "Facebook") { <i class="fab fa-facebook text-primary"></i> }
+                                            else { <i class="fas fa-sign-in-alt"></i> }
+                                            Sign in with @provider.DisplayName
+                                        </button>
+                                    }
+                                </div>
+                            </form>
+                        }
+                    }
+                    
+                    <div class="text-center mt-4">
+                        <p class="small text-muted">Don't have an account? <a asp-action="Register" class="fw-bold text-primary">Sign up</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -162,7 +162,6 @@ C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\obj\Debug\net9.
 C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\obj\Debug\net9.0\scopedcss\bundle\ShopTARgv24.styles.css
 C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\obj\Debug\net9.0\scopedcss\projectbundle\ShopTARgv24.bundle.scp.css
-C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\obj\Debug\net9.0\compressed\robnw7at0i-b9sayid5wm.gz
 C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\obj\Debug\net9.0\compressed\4va1dhym3e-61n19gt1b8.gz
 C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\obj\Debug\net9.0\compressed\61y31kdvsn-xtxxf3hu2r.gz
 C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\obj\Debug\net9.0\compressed\7tsbn21upg-t1cqhe9u97.gz
@@ -271,3 +270,4 @@ C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.
 C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.0\System.Text.Json.dll
 C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.Google.dll
 C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.Facebook.dll
+C:\Users\zange\RiderProjects\ShopTARgv24\ShopTARgv24\ShopTARgv24\obj\Debug\net9.0\compressed\robnw7at0i-hu6zwc040f.gz

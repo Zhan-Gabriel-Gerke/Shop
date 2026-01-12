@@ -42,6 +42,11 @@ namespace ShopTARgv24
                 .AddDefaultTokenProviders()
                 .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>("CustomEmailConfirmation");
             
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Accounts/Login";
+            });
+            
             builder.Services.AddAuthentication()
                 .AddGoogle(options =>
                 {

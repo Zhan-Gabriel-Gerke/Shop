@@ -1,9 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject SignInManager<ShopTARgv24.Core.Domain.ApplicationUser> SignInManager
-@inject UserManager<ShopTARgv24.Core.Domain.ApplicationUser> userManager
-@{
-    var user = await userManager.GetUserAsync(User);
-}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,15 +8,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ShopTARgv24</title>
     <script type="importmap"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ShopTARgv24.styles.css" asp-append-version="true" />
+    
+    <!-- FontAwesome for Icons (Optional but recommended) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ShopTARgv24</a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom box-shadow mb-3 py-3">
+            <div class="container">
+                <a class="navbar-brand fw-bold" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="fa-solid fa-shop me-2"></i>Shop
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -27,67 +33,55 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        @if (SignInManager.IsSignedIn(User))
-                        {
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Spaceships" asp-action="Index">Spaceship</a>
+                            <a class="nav-link" asp-area="" asp-controller="Spaceships" asp-action="Index">Spaceships</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="RealEstate" asp-action="Index">RealEstate</a>
+                            <a class="nav-link" asp-area="" asp-controller="RealEstate" asp-action="Index">Real Estate</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Weather" asp-action="Index">Weather</a>
+                            <a class="nav-link" asp-area="" asp-controller="Weather" asp-action="Index">Weather</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Chucknorris" asp-action="Index">ChuckNorris</a>
+                            <a class="nav-link" asp-area="" asp-controller="Chucknorris" asp-action="Index">Chuck Norris</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cocktail" asp-action="Index">Cocktails</a>
+                            <a class="nav-link" asp-area="" asp-controller="Cocktail" asp-action="Index">Cocktails</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Email" asp-action="Index">Email</a>
+                            <a class="nav-link" asp-area="" asp-controller="Email" asp-action="Index">Email</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Chat">Chat</a>
+                            <a class="nav-link" asp-controller="Home" asp-action="Chat">Chat</a>
                         </li>
-                        }
                     </ul>
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav ms-auto">
                         @if (SignInManager.IsSignedIn(User))
                         {
                             <li class="nav-item dropdown">
-                                <div class="dropdown">
-                                    <button class="btn btn-info-dropdown dropdown-toggle" type="button" data-bs-toggle="dropdown" id="dropDownMenu">
-                                        Manage Account
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
-                                        <li>
-                                            <a class="dropdown-item" asp-controller="Accounts" asp-action="ChangePassword">Change Password</a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                            </li>
-                            <li class="nav-item">
-                                <form method="post" asp-action="logout" asp-controller="accounts">
-                                    <button type="submit" class="nav-link btn btn-link text-dark">
-                                        Logout  @User.Identity.Name
-                                    </button>
-                                </form>
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Hello, @User.Identity.Name
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <li>
+                                        <form method="post" asp-action="logout" asp-controller="accounts">
+                                            <button type="submit" class="dropdown-item text-danger">
+                                                <i class="fa-solid fa-right-from-bracket me-2"></i>Logout
+                                            </button>
+                                        </form>
+                                    </li>
+                                </ul>
                             </li>
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Accounts" asp-action="Register">Register</a>
+                                <a class="nav-link btn btn-outline-light ms-2 px-3 rounded-pill" asp-area="" asp-controller="Accounts" asp-action="Register">Sign Up</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Accounts" asp-action="Login">Log in</a>
+                                <a class="nav-link btn btn-primary ms-2 px-3 rounded-pill text-white" asp-area="" asp-controller="Accounts" asp-action="Login">Log In</a>
                             </li>
                         }
                     </ul>
@@ -95,17 +89,12 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container main-container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - ShopTARgv24 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
