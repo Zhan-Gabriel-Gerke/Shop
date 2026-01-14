@@ -1,3 +1,43 @@
-ShopTARgv24/appsettings.json
-ShopTARgv24/bin/Debug/net9.0/appsettings.json
-ShopTARgv24/appsettings.json
+## --- СБОРКА И МУСОР (САМОЕ ВАЖНОЕ) ---
+# Игнорируем результаты компиляции. Это удалит 99% мусора из твоего репо.
+[Bb]in/
+[Oo]bj/
+
+## --- IDE И НАСТРОЙКИ (ЛИЧНОЕ) ---
+# Настройки Rider (JetBrains)
+.idea/
+*.sln.iml
+# Настройки Visual Studio
+.vs/
+.vscode/
+*.user
+*.suo
+*.userprefs
+
+## --- СЕКРЕТЫ И КОНФИГИ ---
+# appsettings.json ОБЫЧНО коммитят (там структура), а секреты хранят в Development.
+# Но если ты параноик и там реальные ключи — тогда раскомментируй строку ниже.
+# appsettings.json
+
+# appsettings.Development.json игнорируем ВСЕГДА. Там локальные строки подключения.
+**/appsettings.Development.json
+**/appsettings.Production.json
+
+# Локальные настройки запуска (там бывают порты и environment variables)
+**/Properties/launchSettings.json
+
+## --- OS FILES ---
+.DS_Store
+Thumbs.db
+
+## --- ТЕСТЫ И ПОКРЫТИЕ ---
+TestResults/
+*.trx
+coverage.json
+*.coverlet.json
+
+## --- NUGET ---
+# Сами пакеты восстанавливаются при билде, их хранить не надо
+packages/
+*.nuget.props
+*.nuget.targets
